@@ -1,6 +1,6 @@
 \pagebreak
-\chapter{The \code{proc\_bind} Clause}
-\label{chap:affinity}
+\section{The \code{proc\_bind} Clause}
+\label{sec:affinity}
 
 The following examples demonstrate how to use the \code{proc\_bind} clause to 
 control the thread binding for a team of threads in a \code{parallel} region. 
@@ -25,7 +25,9 @@ or
 
 \code{OMP\_PLACES=\texttt{"}\{0:2\}:8:2\texttt{"}}
 
-\section{Spread Affinity Policy}
+\subsection{Spread Affinity Policy}
+\label{subsec:affinity_spread}
+
 
 The following example shows the result of the \code{spread} affinity policy on 
 the partition list when the number of threads is less than or equal to the number 
@@ -120,7 +122,8 @@ and distribution of the place partition would be as follows:
 \item threads 14,15 execute on p1 with the place partition p1
 \end{compactitem}
 
-\section{Close Affinity Policy}
+\subsection{Close Affinity Policy}
+\label{subsec:affinity_close}
 
 The following example shows the result of the \code{close} affinity policy on 
 the partition list when the number of threads is less than or equal to the number 
@@ -215,7 +218,8 @@ and distribution of the place partition would be as follows:
 \item threads 14,15 execute on p1 with the place partition p0-p7
 \end{compactitem}
 
-\section{Master Affinity Policy}
+\subsection{Master Affinity Policy}
+\label{subsec:affinity_master}
 
 The following example shows the result of the \code{master} affinity policy on 
 the partition list for the machine architecture depicted above. The place partition 

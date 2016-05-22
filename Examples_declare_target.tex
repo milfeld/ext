@@ -1,8 +1,9 @@
 \pagebreak
-\chapter{\code{declare} \code{target} Construct}
-\label{chap:declare_target}
+\section{\code{declare} \code{target} Construct}
+\label{sec:declare_target}
 
-\section{\code{declare} \code{target} and \code{end} \code{declare} \code{target} for a Function}
+\subsection{\code{declare} \code{target} and \code{end} \code{declare} \code{target} for a Function}
+\label{subsec:declare_target_function}
 
 The following example shows how the \code{declare} \code{target} directive 
 is used to indicate that the corresponding call inside a \code{target} region 
@@ -36,7 +37,8 @@ scope for the compiler to determine that a target binary should be available.
 
 \fexample{declare_target}{2f}
 
-\section{\code{declare} \code{target} Construct for Class Type}
+\subsection{\code{declare} \code{target} Construct for Class Type}
+\label{subsec:declare_target_class}
 
 \cppspecificstart
 The following example shows how the \code{declare} \code{target} and \code{end} 
@@ -48,7 +50,8 @@ be accessed on a target device because its declaration did not appear between \c
 \cnexample{declare_target}{2c}
 \cppspecificend
 
-\section{\code{declare} \code{target} and \code{end} \code{declare} \code{target} for Variables}
+\subsection{\code{declare} \code{target} and \code{end} \code{declare} \code{target} for Variables}
+\label{subsec:declare_target_variables}
 
 The following examples show how the \code{declare} \code{target} and \code{end} 
 \code{declare} \code{target} directives are used to indicate that global variables 
@@ -92,7 +95,8 @@ assumed, as illustrated in the \code{Pfun()} function.
 
 \fexample{declare_target}{4f}
 
-\section{\code{declare} \code{target} and \code{end} \code{declare} \code{target} with \code{declare} \code{simd}}
+\subsection{\code{declare} \code{target} and \code{end} \code{declare} \code{target} with \code{declare} \code{simd}}
+\label{subsec:declare_target_simd}
 
 The following example shows how the \code{declare} \code{target} and \code{end} 
 \code{declare} \code{target} directives are used to indicate that a function 

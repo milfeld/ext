@@ -1,9 +1,10 @@
 \pagebreak
-\chapter{\code{teams} Constructs}
-\label{chap:teams}
+\section{\code{teams} Constructs}
+\label{sec:teams}
 
-\section{\code{target} and \code{teams} Constructs with \code{omp\_get\_num\_teams}\\
+\subsection{\code{target} and \code{teams} Constructs with \code{omp\_get\_num\_teams}\\
 and \code{omp\_get\_team\_num} Routines}
+\label{subsec:teams_api}
 
 The following example shows how the \code{target} and \code{teams} constructs 
 are used to create a league of thread teams that execute a region. The \code{teams} 
@@ -19,7 +20,8 @@ example manually distributes a loop across two teams.
 
 \fexample{teams}{1f}
 
-\section{\code{target}, \code{teams}, and \code{distribute} Constructs}
+\subsection{\code{target}, \code{teams}, and \code{distribute} Constructs}
+\label{subsec:teams_distribute}
 
 The following example shows how the \code{target}, \code{teams}, and \code{distribute} 
 constructs are used to execute a loop nest in a \code{target} region. The \code{teams} 
@@ -49,7 +51,8 @@ implicitly mapped into the \code{target} region.
 
 \fexample{teams}{2f}
 
-\section{\code{target} \code{teams}, and Distribute Parallel Loop Constructs}
+\subsection{\code{target} \code{teams}, and Distribute Parallel Loop Constructs}
+\label{subsec:teams_distribute_parallel}
 
 The following example shows how the \code{target} \code{teams} and distribute 
 parallel loop constructs are used to execute a \code{target} region. The \code{target} 
@@ -63,8 +66,9 @@ master threads of each team and then across the threads of each team.
 
 \fexample{teams}{3f}
 
-\section{\code{target} \code{teams} and Distribute Parallel Loop 
+\subsection{\code{target} \code{teams} and Distribute Parallel Loop 
 Constructs with Scheduling Clauses}
+\label{subsec:teams_distribute_parallel_schedule}
 
 The following example shows how the \code{target} \code{teams} and distribute 
 parallel loop constructs are used to execute a \code{target} region. The \code{teams} 
@@ -87,7 +91,8 @@ of 64 iterations.
 
 \fexample{teams}{4f}
 
-\section{\code{target} \code{teams} and \code{distribute} \code{simd} Constructs}
+\subsection{\code{target} \code{teams} and \code{distribute} \code{simd} Constructs}
+\label{subsec:teams_distribute_simd}
 
 The following example shows how the \code{target} \code{teams} and \code{distribute} 
 \code{simd} constructs are used to execute a loop in a \code{target} region. 
@@ -101,7 +106,8 @@ the master thread of each team and then uses SIMD parallelism to execute the ite
 
 \fexample{teams}{5f}
 
-\section{\code{target} \code{teams} and Distribute Parallel Loop SIMD Constructs}
+\subsection{\code{target} \code{teams} and Distribute Parallel Loop SIMD Constructs}
+\label{subsec:teams_distribute_parallel_simd}
 
 The following example shows how the \code{target} \code{teams} and the distribute 
 parallel loop SIMD constructs are used to execute a loop in a \code{target} \code{teams} 

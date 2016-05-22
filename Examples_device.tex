@@ -1,8 +1,9 @@
 \pagebreak
-\chapter{Device Routines}
-\label{chap:device}
+\section{Device Routines}
+\label{sec:device}
 
-\section{\code{omp\_is\_initial\_device} Routine}
+\subsection{\code{omp\_is\_initial\_device} Routine}
+\label{subsec:device_is_initial}
 
 The following example shows how the \code{omp\_is\_initial\_device} runtime library routine 
 can be used to query if a code is executing on the initial host device or on a 
@@ -13,7 +14,8 @@ region based on where the code is executing.
 
 \fexample{device}{1f}
 
-\section{\code{omp\_get\_num\_devices} Routine}
+\subsection{\code{omp\_get\_num\_devices} Routine}
+\label{subsec:device_num_devices}
 
 The following example shows how the \code{omp\_get\_num\_devices} runtime library routine 
 can be used to determine the number of devices.
@@ -22,8 +24,9 @@ can be used to determine the number of devices.
 
 \fexample{device}{2f}
 
-\section{\code{omp\_set\_default\_device} and \\
+\subsection{\code{omp\_set\_default\_device} and \\
 \code{omp\_get\_default\_device} Routines}
+\label{subsec:device_is_set_get_default}
 
 The following example shows how the \code{omp\_set\_default\_device} and \code{omp\_get\_default\_device} 
 runtime library routines can be used to set the default device and determine the 

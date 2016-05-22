@@ -1,8 +1,9 @@
 \pagebreak
-\chapter{Task Dependences}
-\label{chap:task_dep}
+\section{Task Dependences}
+\label{sec:task_depend}
 
-\section{Flow Dependence}
+\subsection{Flow Dependence}
+\label{subsec:task_flow_depend}
 
 In this example we show a simple flow dependence expressed using the \code{depend} 
 clause on the \code{task} construct.
@@ -16,7 +17,8 @@ clauses enforce the ordering of the tasks. If the \code{depend} clauses had been
 omitted, then the tasks could execute in any order and the program and the program 
 would have a race condition.
 
-\section{Anti-dependence}
+\subsection{Anti-dependence}
+\label{subsec:task_anti_depend}
 
 In this example we show an anti-dependence expressed using the \code{depend} 
 clause on the \code{task} construct.
@@ -30,7 +32,8 @@ clauses enforce the ordering of the tasks. If the \code{depend} clauses had been
 omitted, then the tasks could execute in any order and the program would have a 
 race condition.
 
-\section{Output Dependence}
+\subsection{Output Dependence}
+\label{subsec:task_out_depend}
 
 In this example we show an output dependence expressed using the \code{depend} 
 clause on the \code{task} construct.
@@ -44,7 +47,8 @@ clauses enforce the ordering of the tasks. If the \code{depend} clauses had been
 omitted, then the tasks could execute in any order and the program would have a 
 race condition.
 
-\section{Concurrent Execution with Dependences}
+\subsection{Concurrent Execution with Dependences}
+\label{subsec:task_concurrent_depend}
 
 In this example we show potentially concurrent execution of tasks using multiple 
 flow dependences expressed using the \code{depend} clause on the \code{task} 
@@ -61,7 +65,8 @@ more than one thread is available). Thus, the possible outputs are \texttt{"}x
 If the \code{depend} clauses had been omitted, then all of the tasks could execute 
 in any order and the program would have a race condition.
 
-\section{Matrix multiplication}
+\subsection{Matrix multiplication}
+\label{subsec:task_matrix_mult}
 
 This example shows a task-based blocked matrix multiplication. Matrices are of 
 NxN elements, and the multiplication is implemented using blocks of BSxBS elements.

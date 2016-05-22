@@ -1,8 +1,9 @@
 \pagebreak
-\chapter{\code{target} Construct}
-\label{chap:target}
+\section{\code{target} Construct}
+\label{sec:target}
 
-\section{\code{target} Construct on \code{parallel} Construct}
+\subsection{\code{target} Construct on \code{parallel} Construct}
+\label{subsec:target_parallel}
 
 This following example shows how the \code{target} construct offloads a code 
 region to a target device. The variables \plc{p}, \plc{v1}, \plc{v2}, and \plc{N} are implicitly mapped 
@@ -12,7 +13,8 @@ to the target device.
 
 \fexample{target}{1f}
 
-\section{\code{target} Construct with \code{map} Clause}
+\subsection{\code{target} Construct with \code{map} Clause}
+\label{subsec:target_map}
 
 This following example shows how the \code{target} construct offloads a code 
 region to a target device. The variables \plc{p}, \plc{v1} and \plc{v2} are explicitly mapped to the 
@@ -23,7 +25,8 @@ the target device.
 
 \fexample{target}{2f}
 
-\section{\code{map} Clause with \code{to}/\code{from} map-types}
+\subsection{\code{map} Clause with \code{to}/\code{from} map-types}
+\label{subsec:target_map_tofrom}
 
 The following example shows how the \code{target} construct offloads a code region 
 to a target device. In the \code{map} clause, the \code{to} and \code{from} 
@@ -52,7 +55,8 @@ to the default behavior of an implicit mapping.
 
 \fexample{target}{3f}
 
-\section{\code{map} Clause with Array Sections}
+\subsection{\code{map} Clause with Array Sections}
+\label{subsec:target_array_section}
 
 The following example shows how the \code{target} construct offloads a code region 
 to a target device. In the \code{map} clause, map-types are used to optimize 
@@ -77,7 +81,8 @@ for the lower bound for array section \plc{v2(:N)}.
 
 \fexample{target}{4bf}
 
-\section{\code{target} Construct with \code{if} Clause}
+\subsection{\code{target} Construct with \code{if} Clause}
+\label{subsec:target_if}
 
 The following example shows how the \code{target} construct offloads a code region 
 to a target device.
