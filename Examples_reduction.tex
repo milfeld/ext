@@ -8,7 +8,7 @@ and \code{min} reductions below:
 
 \cexample{reduction}{1c}
 
-\fexample{reduction}{1f}
+\ffreeexample{reduction}{1f90}
 
 A common implementation of the preceding example is to treat it as if it had been 
 written as follows:
@@ -16,7 +16,7 @@ written as follows:
 \cexample{reduction}{2c}
 
 \fortranspecificstart
-\fnexample{reduction}{2f}
+\ffreenexample{reduction}{2f90}
 
 The following program is non-conforming because the reduction is on the 
 \emph{intrinsic procedure name} \code{MAX} but that name has been redefined to be the variable 
@@ -26,19 +26,19 @@ named \code{MAX}.
 \linewitharrows{-1}{dashed}{Fortran (cont.)}{8em}
 \end{figure}
 
-\fnexample{reduction}{3f}
+\ffreenexample{reduction}{3f90}
 
 The following conforming program performs the reduction using the 
 \emph{intrinsic procedure name} \code{MAX} even though the intrinsic \code{MAX} has been renamed 
 to \code{REN}.
 
-\fnexample{reduction}{4f}
+\ffreenexample{reduction}{4f90}
 
 The following conforming program performs the reduction using 
 \plc{intrinsic procedure name} \code{MAX} even though the intrinsic \code{MAX} has been renamed 
 to \code{MIN}.
 
-\fnexample{reduction}{5f}
+\ffreenexample{reduction}{5f90}
 \fortranspecificend
 
 The following example is non-conforming because the initialization (\code{a = 

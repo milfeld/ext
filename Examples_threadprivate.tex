@@ -22,7 +22,7 @@ constructed using the value of \code{x}  (which is modified by the statement
 region could be either 1 or 2. This problem is avoided for \code{b}, which uses 
 an auxiliary \code{const} variable and a copy-constructor.
 
-\cnexample{threadprivate}{3c}
+\cppnexample{threadprivate}{3cpp}
 \ccppspecificend
 
 The following examples show non-conforming uses and correct uses of the \code{threadprivate} 
@@ -95,12 +95,12 @@ for class-type \code{T}. \code{t1} is default constructed, \code{t2} is construc
 taking a constructor accepting one argument of integer type, \code{t3} is copy 
 constructed with argument \code{f()}:
 
-\cnexample{threadprivate}{4c}
+\cppnexample{threadprivate}{4cpp}
 
 The following example illustrates the use of \code{threadprivate} for static 
 class members. The \code{threadprivate} directive for a static class member must 
 be placed inside the class definition.
 
-\cnexample{threadprivate}{5c}
+\cppnexample{threadprivate}{5cpp}
 \cppspecificend
 

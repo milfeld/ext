@@ -27,7 +27,7 @@ The program uses the \code{module\_fib} module, which presents an explicit inter
 the compiler with the \code{declare} \code{target} declarations for processing 
 the \code{fib} call.
 
-\fexample{declare_target}{1f}
+\ffreeexample{declare_target}{1f90}
 
 The next Fortran example shows the use of an external subroutine. Without an explicit 
 interface (through module use or an interface block) the \code{declare} \code{target} 
@@ -35,7 +35,7 @@ declarations within a external subroutine are unknown to the main program unit;
 therefore, a \code{declare} \code{target} must be provided within the program 
 scope for the compiler to determine that a target binary should be available.
 
-\fexample{declare_target}{2f}
+\ffreeexample{declare_target}{2f90}
 
 \subsection{\code{declare} \code{target} Construct for Class Type}
 \label{subsec:declare_target_class}
@@ -47,7 +47,7 @@ of a variable \plc{varY} with a class type \code{typeY}. The member function \co
 be accessed on a target device because its declaration did not appear between \code{declare} 
 \code{target} and \code{end} \code{declare} \code{target} directives.
 
-\cnexample{declare_target}{2c}
+\cppnexample{declare_target}{2cpp}
 \cppspecificend
 
 \subsection{\code{declare} \code{target} and \code{end} \code{declare} \code{target} for Variables}
@@ -71,7 +71,7 @@ The Fortran version of the above C code uses a different syntax. Fortran modules
 use a list syntax on the \code{declare} \code{target} directive to declare 
 mapped variables.
 
-\fexample{declare_target}{3f}
+\ffreeexample{declare_target}{3f90}
 
 The following example also indicates that the function \code{Pfun()} is available on the 
 target device, as well as the variable \plc{Q}, which is mapped to the implicit device 
@@ -93,7 +93,7 @@ separated list. When the \code{declare} \code{target} directive is used to
 declare just the procedure, the procedure name need not be listed -- it is implicitly 
 assumed, as illustrated in the \code{Pfun()} function.
 
-\fexample{declare_target}{4f}
+\ffreeexample{declare_target}{4f90}
 
 \subsection{\code{declare} \code{target} and \code{end} \code{declare} \code{target} with \code{declare} \code{simd}}
 \label{subsec:declare_target_simd}
@@ -113,5 +113,5 @@ The function declaration does not use a list and implicitly assumes the function
 name. In this Fortran example row and column indices are reversed relative to the 
 C/C++ example, as is usual for codes optimized for memory access.
 
-\fexample{declare_target}{5f}
+\ffreeexample{declare_target}{5f90}
 
