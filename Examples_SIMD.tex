@@ -11,7 +11,7 @@ that the loop can be vectorized.
 
 \cexample{SIMD}{1c}
 
-\fexample{SIMD}{1f}
+\ffreeexample{SIMD}{1f90}
  
 
 When a function can be inlined within a loop the compiler has an opportunity to 
@@ -44,7 +44,7 @@ variable.
 
 \cexample{SIMD}{2c}
 
-\fexample{SIMD}{2f}
+\ffreeexample{SIMD}{2f90}
 
 
 A thread that encounters a SIMD construct executes a vectorized code of the 
@@ -56,7 +56,7 @@ construct.
 
 \cexample{SIMD}{3c}
 
-\fexample{SIMD}{3f}
+\ffreeexample{SIMD}{3f90}
 
 
 A \code{safelen(N)} clause in a \code{simd} construct assures the compiler that 
@@ -71,7 +71,7 @@ than 16, the behavior is undefined.
 
 \cexample{SIMD}{4c}
 
-\fexample{SIMD}{4f}
+\ffreeexample{SIMD}{4f90}
 
 
 The following SIMD construct instructs the compiler to collapse the \plc{i} and 
@@ -81,7 +81,7 @@ chunks are executed in the lanes of the vector units.
 
 \cexample{SIMD}{5c}
 
-\fexample{SIMD}{5f}
+\ffreeexample{SIMD}{5f90}
 
 
 The following examples illustrate the use of the \code{declare} \code{simd} 
@@ -94,7 +94,7 @@ the function \plc{myaddfloat}.
 
 \cexample{SIMD}{6c}
 
-\fexample{SIMD}{6f}
+\ffreeexample{SIMD}{6f90}
 
 
 In the code below, the function \plc{fib()} is called in the main program and 
@@ -105,5 +105,5 @@ version of the \plc{fib()} function.
 
 \cexample{SIMD}{7c}
 
-\fexample{SIMD}{7f}
+\ffreeexample{SIMD}{7f90}
 
