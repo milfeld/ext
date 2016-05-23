@@ -101,15 +101,16 @@
 
     \input{Chap_tasking}
        \input{Examples_tasking}
-     % Taskloop  378
+       \input{Examples_task_priority}
        \input{Examples_task_dep}
        \input{Examples_taskgroup}
        \input{Examples_taskyield}
+       \input{Examples_taskloop}
 
     \input{Chap_devices}
        \input{Examples_target}
        \input{Examples_target_data}
-      % Target enter and exit data 472
+       \input{Examples_target_unstructured_data}
        \input{Examples_target_update}
        \input{Examples_declare_target}
            % Link clause 474
@@ -139,13 +140,14 @@
        \input{Examples_flush_nolist}
        \input{Examples_ordered}
      % Doacross loop  405
-    %  % LOCK Routines (new Section)
+       \input{Examples_locks}
             \input{Examples_init_lock}
+            \input{Examples_init_lock_with_hint} 
             \input{Examples_lock_owner}
             \input{Examples_simple_lock}
             \input{Examples_nestable_lock}
     %  % LOCK with Hints 478
-    %       % Hint Clause
+    %       % Hint Clause  xxxxxx (included after init_lock)
     %       % Lock routines with hint
            
 

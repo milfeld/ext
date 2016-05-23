@@ -24,9 +24,11 @@ CHAPTERS=Title_Page.tex \
 	Examples_fpriv_sections.tex \
 	Examples_single.tex \
 	Examples_tasking.tex \
+	Examples_task_priority.tex \
 	Examples_task_dep.tex \
 	Examples_taskgroup.tex \
 	Examples_taskyield.tex \
+	Examples_taskloop.tex \
 	Examples_workshare.tex \
 	Examples_master.tex \
 	Examples_critical.tex \

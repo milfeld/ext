@@ -20,7 +20,7 @@ The Fortran code passes a reference and specifies the extent of the arrays in th
 declaration. No length information is necessary in the map clause, as is required 
 with C/C++ pointers.
 
-\fexample{target_data}{1f}
+\ffreeexample{target_data}{1f90}
 
 \subsection{\code{target} \code{data} Region Enclosing Multiple \code{target} Regions}
 \label{subsec:target_data_multiregion}
@@ -47,7 +47,7 @@ C/C++ pointers. The arrays \plc{v1} and \plc{v2} are mapped at each \code{target
 Instead of mapping the array \plc{p} twice, once at each target construct, \plc{p} is mapped 
 once by the \code{target} \code{data} construct.
 
-\fexample{target_data}{2f}
+\ffreeexample{target_data}{2f90}
 
 In the following example, the variable tmp defaults to \code{tofrom} map-type 
 and is mapped at each \code{target} construct. The array \plc{Q} is mapped once at 
@@ -63,7 +63,7 @@ variable is implicitly remapped for each \code{target} region, mapping the value
 from the device to the host at the end of the first \code{target} region, and 
 from the host to the device for the second \code{target} region.
 
-\fexample{target_data}{3f}
+\ffreeexample{target_data}{3f90}
 
 \section{\code{target} \code{data} Construct with Orphaned Call}
 
@@ -106,7 +106,7 @@ assigned the address of the storage location associated with their corresponding
 array sections. Note that the following pair of array storage locations are equivalent 
 (\plc{p0},\plc{p1}), (\plc{v1},\plc{v3}), and (\plc{v2},\plc{v4}).
 
-\fexample{target_data}{4f}
+\ffreeexample{target_data}{4f90}
 
 
 In the following example, the variables \plc{p1}, \plc{v3}, and \plc{v4} are references to the pointer 
@@ -115,7 +115,7 @@ environment inherits the pointer variables \plc{p0}, \plc{v1}, and \plc{v2} from
 \code{data} construct's device data environment. Thus, \plc{p1}, \plc{v3}, and \plc{v4} are already 
 present in the device data environment.
 
-\cexample{target_data}{5c}
+\cppexample{target_data}{5cpp}
 
 In the following example, the usual Fortran approach is used for dynamic memory. 
 The \plc{p0}, \plc{v1}, and \plc{v2} arrays are allocated in the main program and passed as references 
@@ -125,7 +125,7 @@ environment inherits the arrays \plc{p0}, \plc{v1}, and \plc{v2} from the enclos
 device data environment. Thus, \plc{p1}, \plc{v3}, and \plc{v4} are already present in the device 
 data environment.
 
-\fexample{target_data}{5f}
+\ffreeexample{target_data}{5f90}
 
 \subsection{\code{target} \code{data} Construct with \code{if} Clause}
 \label{subsec:target_data_if}
@@ -151,7 +151,7 @@ an \code{if} clause with the same condition, so that the \code{target} \code{dat
 region and the \code{target} region are either both created for the device, or 
 are both ignored.
 
-\fexample{target_data}{6f}
+\ffreeexample{target_data}{6f90}
 
 In the following example, when the \code{if} clause conditional expression on 
 the \code{target} construct evaluates to \plc{false}, the target region will 
@@ -174,5 +174,5 @@ region the \plc{p} array will be assigned from the device data environment to th
 variable in the data environment of the task that encountered the \code{target} 
 \code{data} construct, resulting in undefined values in \plc{p}.
 
-\fexample{target_data}{7f}
+\ffreeexample{target_data}{7f90}
 

@@ -10,7 +10,7 @@ clause on the \code{task} construct.
 
 \cexample{task_dep}{1c}
 
-\fexample{task_dep}{1f}
+\ffreeexample{task_dep}{1f90}
 
 The program will always print \texttt{"}x = 2\texttt{"}, because the \code{depend} 
 clauses enforce the ordering of the tasks. If the \code{depend} clauses had been 
@@ -25,7 +25,7 @@ clause on the \code{task} construct.
 
 \cexample{task_dep}{2c}
 
-\fexample{task_dep}{2f}
+\ffreeexample{task_dep}{2f90}
 
 The program will always print \texttt{"}x = 1\texttt{"}, because the \code{depend} 
 clauses enforce the ordering of the tasks. If the \code{depend} clauses had been 
@@ -40,7 +40,7 @@ clause on the \code{task} construct.
 
 \cexample{task_dep}{3c}
 
-\fexample{task_dep}{3f}
+\ffreeexample{task_dep}{3f90}
 
 The program will always print \texttt{"}x = 2\texttt{"}, because the \code{depend} 
 clauses enforce the ordering of the tasks. If the \code{depend} clauses had been 
@@ -56,7 +56,7 @@ construct.
 
 \cexample{task_dep}{4c}
 
-\fexample{task_dep}{4f}
+\ffreeexample{task_dep}{4f90}
 
 The last two tasks are dependent on the first task. However there is no dependence 
 between the last two tasks, which may execute in any order (or concurrently if 
@@ -73,5 +73,5 @@ NxN elements, and the multiplication is implemented using blocks of BSxBS elemen
 
 \cexample{task_dep}{5c}
 
-\fexample{task_dep}{5f}
+\ffreeexample{task_dep}{5f90}
 

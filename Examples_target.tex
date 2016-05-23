@@ -11,7 +11,7 @@ to the target device.
 
 \cexample{target}{1c}
 
-\fexample{target}{1f}
+\ffreeexample{target}{1f90}
 
 \subsection{\code{target} Construct with \code{map} Clause}
 \label{subsec:target_map}
@@ -23,7 +23,7 @@ the target device.
 
 \cexample{target}{2c}
 
-\fexample{target}{2f}
+\ffreeexample{target}{2f90}
 
 \subsection{\code{map} Clause with \code{to}/\code{from} map-types}
 \label{subsec:target_map_tofrom}
@@ -53,7 +53,7 @@ motion. Since data for the \plc{v} arrays are not returned, and data for the \pl
 are not transferred to the device, only one-half of the data is moved, compared 
 to the default behavior of an implicit mapping.
 
-\fexample{target}{3f}
+\ffreeexample{target}{3f90}
 
 \subsection{\code{map} Clause with Array Sections}
 \label{subsec:target_array_section}
@@ -71,7 +71,7 @@ of the array is known and the length need not be specified. A section of the arr
 can be specified with the usual Fortran syntax, as shown in the following example. 
 The value 1 is assumed for the lower bound for array section \plc{v2(:N)}.
 
-\fexample{target}{4f}
+\ffreeexample{target}{4f90}
 
 A more realistic situation in which an assumed-size array is passed to \code{vec\_mult} 
 requires that the length of the arrays be specified, because the compiler does 
@@ -79,7 +79,7 @@ not know the size of the storage. A section of the array must be specified with
 the usual Fortran syntax, as shown in the following example. The value 1 is assumed 
 for the lower bound for array section \plc{v2(:N)}.
 
-\fexample{target}{4bf}
+\ffreeexample{target}{4bf90}
 
 \subsection{\code{target} Construct with \code{if} Clause}
 \label{subsec:target_if}
@@ -97,5 +97,5 @@ is inactive.
 
 \cexample{target}{5c}
 
-\fexample{target}{5f}
+\ffreeexample{target}{5f90}
 
