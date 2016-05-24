@@ -22,7 +22,8 @@ subroutine vec_mult(N)
          call init(v2, N)
          !$omp end task
 
-         !$omp target nowait depend(in:v1,v2) depend(out:p) map(from: p) map(to:v1,v2)
+         !$omp target nowait depend(in:v1,v2) depend(out:p) &
+         !$omp&                 map(to:v1,v2)  map(from: p)
          !$omp parallel do
          do i=1,N
             p(i) = v1(i) * v2(i)

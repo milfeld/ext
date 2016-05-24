@@ -24,7 +24,8 @@ void vec_mult(int N)
          #pragma omp task depend(out:v2)
          init(v2, N);
    
-         #pragma omp target nowait depend(in:v1,v2) depend(out:p) map(from: p) map(to:v1,v2)
+         #pragma omp target nowait depend(in:v1,v2) depend(out:p) \
+                                      map(to:v1,v2) map( from: p)
          #pragma omp parallel for private(i)
          for (i=0; i<N; i++)
             p[i] = v1[i] * v2[i];
