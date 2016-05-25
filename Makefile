@@ -67,6 +67,8 @@ CHAPTERS=Title_Page.tex \
 	Examples_declare_target.tex \
 	Examples_teams.tex \
 	Examples_async_target_depend.tex \
+	Examples_async_target_with_tasks.tex \
+	Examples_async_target_nowait_depend.tex \
 	Examples_array_sections.tex \
 	Examples_device.tex \
 	Examples_associate.tex \

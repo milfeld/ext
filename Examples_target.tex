@@ -99,3 +99,14 @@ is inactive.
 
 \ffreeexample{target}{5f90}
 
+The following example is a modification of the above target.5 code to show the combined \code{target}
+and parallel loop directives. It uses the \plc{directive-name} modifier in multiple \code{if}
+clauses to specify the component directive to which it applies. 
+
+The \code{if} clause with the \code{target} modifier applies to the \code{target} component of the 
+combined directive, and the \code{if} clause with the \code{parallel} modifier applies 
+to the \code{parallel} component of the combined directive.    
+
+\cexample{target}{6c}
+
+\ffreeexample{target}{6f90}
