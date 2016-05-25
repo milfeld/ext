@@ -1,7 +1,7 @@
 # Makefile for the OpenMP Examples document in LaTex format. 
 # For more information, see the master document, openmp-examples.tex.
 
-version=4.0.2
+version=4.5.0
 default: openmp-examples.pdf
 
 
@@ -66,7 +66,7 @@ CHAPTERS=Title_Page.tex \
 	Examples_target_update.tex \
 	Examples_declare_target.tex \
 	Examples_teams.tex \
-	Examples_async_target.tex \
+	Examples_async_target_depend.tex \
 	Examples_array_sections.tex \
 	Examples_device.tex \
 	Examples_associate.tex \

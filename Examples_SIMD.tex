@@ -1,13 +1,9 @@
-\pagebreak
-\section{SIMD Constructs}
+%\pagebreak
+\section{\code{simd} and \code{declare} \code{simd} Constructs}
 \label{sec:SIMD}
 
-The following examples illustrate the use of SIMD constructs for vectorization.
-
-Compilers may not vectorize loops when they are complex or possibly have 
-dependencies, even though the programmer is certain the loop will execute 
-correctly as a vectorized loop.  The \code{simd} construct assures the compiler 
-that the loop can be vectorized.
+The following example illustrates the basic use of the \code{simd} construct 
+to assure the compiler that the loop can be vectorized.
 
 \cexample{SIMD}{1c}
 
@@ -84,6 +80,10 @@ chunks are executed in the lanes of the vector units.
 \ffreeexample{SIMD}{5f90}
 
 
+%%% section
+\section{\code{inbranch} and \code{notinbranch} Clauses}
+\label{sec:SIMD_branch}
+
 The following examples illustrate the use of the \code{declare} \code{simd} 
 construct with the \code{inbranch} and \code{notinbranch} clauses. The 
 \code{notinbranch} clause informs the compiler that the function \plc{foo} is 
@@ -106,4 +106,21 @@ version of the \plc{fib()} function.
 \cexample{SIMD}{7c}
 
 \ffreeexample{SIMD}{7f90}
+
+
+
+%%% section
+\section{Loop-Carried Lexical Forward Dependence}
+\label{sec:SIMD_forward_dep}
+
+
+ The following example tests the restriction on an SIMD loop with the loop-carried lexical forward-dependence. This dependence must be preserved for the correct execution for SIMD loop.
+
+A loop can be vectorized even though the iterations are not completely independent when it has loop-carried dependences that are forward lexical dependences (indicated by the read of \plc{A[j+1]} to write \plc{A[j]}, or \plc{A(j+1)} and \plc{A(j)} in Fortran). That is, the read of \plc{A[j+1]} (or \plc{A(j+1)} in Fortran) before write to \plc{A[j]} (or \plc{A(j)} in Fortran) ordering must be preserved for each iteration \plc{j} as a valid SIMD code generation.
+
+This test assures that the compiler preserves the loop carried lexical forward-dependence for generating a correct SIMD code.
+
+\cexample{SIMD}{8c}
+
+\ffreeexample{SIMD}{8f90}
 

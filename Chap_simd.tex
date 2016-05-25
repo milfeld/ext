@@ -2,4 +2,9 @@
 \chapter{SIMD}
 \label{chap:simd}
 
-Chapter introduction for SIMD.
+This chapter includes examples that illustrate the use of SIMD constructs for vectorization.
+
+Compilers may not vectorize loops when they are complex or possibly have 
+dependencies, even though the programmer is certain the loop will execute 
+correctly as a vectorized loop.  SIMD constructs assure the compiler 
+that the loop can be vectorized.
