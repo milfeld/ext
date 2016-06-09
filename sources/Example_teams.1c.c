@@ -11,7 +11,7 @@ float dotprod(float B[], float C[], int N)
 {
    float sum0 = 0.0;
    float sum1 = 0.0;
-   #pragma omp target map(to: B[:N], C[:N])
+   #pragma omp target map(to: B[:N], C[:N]) map(tofrom: sum0, sum1) 
    #pragma omp teams num_teams(2)
    {
       int i;
@@ -32,3 +32,13 @@ float dotprod(float B[], float C[], int N)
    }
    return sum0 + sum1;
 }
+
+/* This source has been updated with the
+   map(tofrom:sum0, sum1) clause on the target
+   directive for correct execution within 
+   4.5 implementations.
+
+   In 4.5 the sum0 and sum1 scalar variable default
+   behavior is firstprivate, in pre-4.5
+   the default behavior is map(tofrom: sum0,sum1).
+*/

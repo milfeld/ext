@@ -16,12 +16,13 @@ integer,intent(in) :: k,i
    P=(Q(k,i) * Q(i,k))
 end function
 end module
+
 function accum() result(tmp)
 use my_global_array
 real    :: tmp, tmp1
 integer :: i
    tmp = 0.0e0
-   !$omp target
+   !$omp target map(tofrom: tmp)
    !$omp parallel do private(tmp1) reduction(+:tmp)
    do i=1,N
       tmp1 = 0.0e0
@@ -33,3 +34,14 @@ integer :: i
    end do
    !$omp end target
 end function
+
+!  This source has been updated with the
+ ! map(tofrom: tmp) clause on the target
+ ! directive for correct execution within
+ ! 4.5 implementations.
+ !
+ ! In 4.5 the tmp scalar variable default
+ ! behavior is firstprivate, in pre-4.5
+ ! the default behavior is map(tofrom: tmp).
+!
+

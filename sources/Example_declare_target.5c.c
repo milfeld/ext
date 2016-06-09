@@ -15,11 +15,12 @@ float P(const int i, const int k)
   return Q[i][k] * Q[k][i];
 }
 #pragma omp end declare target
+
 float accum(void)
 {
   float tmp = 0.0;
   int i, k;
-#pragma omp target
+#pragma omp target map(tofrom: tmp)
 #pragma omp parallel for reduction(+:tmp)
   for (i=0; i < N; i++) {
     float tmp1 = 0.0;
@@ -31,3 +32,13 @@ float accum(void)
   }
   return tmp;
 }
+
+/* This source has been updated with the
+   map(tofrom: tmp) clause on the target
+   directive for correct execution within
+   4.5 implementations.
+
+   In 4.5 the tmp scalar variable default
+   behavior is firstprivate, in pre-4.5
+   the default behavior is map(tofrom: tmp).
+*/

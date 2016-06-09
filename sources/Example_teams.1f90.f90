@@ -9,7 +9,7 @@ use omp_lib, ONLY : omp_get_num_teams, omp_get_team_num
     integer :: N, i
     sum0 = 0.0e0
     sum1 = 0.0e0
-    !$omp target map(to: B, C)
+    !$omp target map(to: B, C) map(tofrom: sum0, sum1)
     !$omp teams num_teams(2)
       if (omp_get_num_teams() /= 2) stop "2 teams required"
       if (omp_get_team_num() == 0) then
@@ -27,3 +27,14 @@ use omp_lib, ONLY : omp_get_num_teams, omp_get_team_num
     !$omp end target
     sum = sum0 + sum1
 end function
+
+!  This source has been updated with the
+ ! map(tofrom: sum0, sum1) clause on the target
+ ! directive for correct execution within
+ ! 4.5 implementations.
+ !
+ ! In 4.5 the sum0 and sum1 scalar variable default
+ ! behavior is firstprivate, in pre-4.5
+ ! the default behavior is map(tofrom: sum0,sum1).
+
+!

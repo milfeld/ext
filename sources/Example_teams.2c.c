@@ -8,9 +8,9 @@
 float dotprod(float B[], float C[], int N, int block_size,
   int num_teams, int block_threads)
 {
-    float sum = 0;
+    float sum = 0.0;
     int i, i0;
-    #pragma omp target map(to: B[0:N], C[0:N])
+    #pragma omp target map(to: B[0:N], C[0:N]) map(tofrom: sum)
     #pragma omp teams num_teams(num_teams) thread_limit(block_threads) \
       reduction(+:sum)
     #pragma omp distribute
@@ -20,3 +20,12 @@ float dotprod(float B[], float C[], int N, int block_size,
            sum += B[i] * C[i];
     return sum;
 }
+/* This source has been updated with the
+   map(tofrom: sum) clause on the target
+   directive for correct execution within
+   4.5 implementations.
+
+   In 4.5 the sum scalar variable default
+   behavior is firstprivate, in pre-4.5
+   the default behavior is map(tofrom: sum).
+*/
