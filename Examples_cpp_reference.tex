@@ -1,0 +1,12 @@
+\section{C++ Reference in Data-Sharing Clauses}
+\label{cpp_reference}
+
+C++ reference types are allowed in data-sharing attribute clauses as of OpenMP 4.5, except
+for the \code{threadprivate}, \code{copyin} and \code{copyprivate} clauses.  
+(See the \textbf{Data-Sharing Attribute Clauses} Section of the 4.5 OpenMP specification.)
+When a variable with C++ reference type is privatized, the object the reference refers to is privatized in addition to the reference itself.
+The following example shows the use of reference types in data-sharing clauses in the usual way.
+Additionally it shows how is data sharing of formal arguments with C++ reference type on orphaned task generating constructs determined implicitly. (See the \textbf{Data-sharing Attribute Rules for Variables Referenced in a Construct} Section of the 4.5 OpenMP specification.)
+
+
+\cppexample{cpp_reference}{1cpp}
