@@ -53,8 +53,13 @@ clause. This can be achieved by adding an explicit barrier after the assignment
 directive (which has an implied barrier), or by initializing \code{a} before 
 the start of the \code{parallel} region.
 
-\cexample{reduction}{3c}
+\cexample{reduction}{6c}
 
 \fexample{reduction}{6f}
 
+The following example demonstrates the reduction of array \plc{a}.  In C/C++ this is illustrated by the explicit use of an array section \plc{a[0:N]} in the \code{reduction} clause.  The corresponding Fortran example uses array syntax supported in the base language.  As of the OpenMP 4.5 specification the explicit use of array section in the \code{reduction} clause in Fortran is not permitted.  But this oversight will be fixed in the next release of the specification.
 
+
+\cexample{reduction}{7c}
+
+\ffreeexample{reduction}{7f90}
