@@ -8,7 +8,7 @@
 #include <stdio.h>
 
 #define N 100
-void init(int n, float *b[N]);
+void init(int n, float (*b)[N]);
 
 int main(){
 
