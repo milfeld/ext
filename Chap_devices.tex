@@ -3,7 +3,7 @@
 \label{chap:devices}
 
 The \code{target} construct consists of a \code{target} directive 
-and an execution region. The target region is executed on
+and an execution region. The \code{target} region is executed on
 the default device or the device specified in the \code{device} 
 clause. 
 
@@ -15,16 +15,16 @@ has created space on the device and possibly copied host
 data to the device storage.
 
 The constructs that explicitly
-create storage, move data, and free storage on the device
+create storage, transfer data, and free storage on the device
 are catagorized as structured and unstructured. The
-\code{target data} construct is unstructured. It creates
+\code{target} \code{data} construct is structured. It creates
 a data region around \code{target} constructs, and is
 convenient for providing persistent data throughout multiple
-target regions. The \code{target data enter} and 
-\code{target exit data} constructs are unstructured, because 
+\code{target} regions. The \code{target} \code{enter} \code{data} and 
+\code{target} \code{exit} \code{data} constructs are unstructured, because 
 they can occur anywhere and do not support a "structure" 
 (a region) for enclosing \code{target} constructs, as does the
-\code{target data} construct. 
+\code{target} \code{data} construct. 
 
 The \code{map} clause is used on \code{target} 
 constructs and the data-type constructs to map host data. It 
@@ -44,10 +44,10 @@ In OpenMP version 4.5 the mechanism for target
 execution is specified as occuring through a \plc{target task}. 
 When the \code{target} construct is encountered a new 
 \plc{target task} is generated. The \plc{target task} 
-completes after the target region has executed and all data 
+completes after the \code{target} region has executed and all data 
 transfers have finished.
 
 This new specification does not affect the execution of 
 pre-4.5 code; it is a necessary element for asynchronous 
-execution of the target region when using the new \code{nowait} 
+execution of the \code{target} region when using the new \code{nowait} 
 clause introduced in OpenMP 4.5.
