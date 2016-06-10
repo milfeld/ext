@@ -19,7 +19,7 @@ subroutine compute_matrix(matrix, M, N)
    !$omp single
    do i=1,N
       !$omp task priority(i)
-      call compute_array(matrix(:, i), N)
+      call compute_array(matrix(:, i), M)
       !$omp end task
    enddo
    !$omp end single
