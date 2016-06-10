@@ -1,4 +1,3 @@
-#!c
 /*
 * @@name:	target.6c
 * @@type:	C
