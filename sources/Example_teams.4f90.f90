@@ -13,7 +13,7 @@ use arrays
    integer :: i
    sum = 0.0e0
    !$omp target map(to: B, C) map(tofrom: sum)
-   !$omp teams num_teams(8) thread_limit(16)
+   !$omp teams num_teams(8) thread_limit(16) reduction(+:sum)
    !$omp distribute parallel do reduction(+:sum) &
    !$omp&  dist_schedule(static, 1024) schedule(static, 64)
       do i = 1,N
