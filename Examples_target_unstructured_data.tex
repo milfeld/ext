@@ -18,7 +18,7 @@ and uses the \code{delete} modifier in the map clause to avoid copying data
 back to the host. Note, the stand-alone \code{target enter data} occurs 
 after the host vector is created, and the \code{target exit data}
 construct occurs before the host data is deleted.
-\cppexample{target_unstructured_data}{1cpp}
+\cppexample{target_unstructured_data}{1}
 
 The following C code allocates and frees the data member of a Matrix structure.
 The \code{init\_matrix} function allocates the memory used in the structure and
@@ -27,7 +27,7 @@ uses the \code{target enter data} directive to map it to the target device. The
 and then frees the memory on the host.  Note, the stand-alone \code{target
 enter data} occurs after the host memory is allocated, and the \code{target
 exit data} construct occurs before the host data is freed.
-\cexample{target_unstructured_data}{1c}
+\cexample{target_unstructured_data}{1}
 
 The following Fortran code allocates and deallocates a module array.  The
 \code{initialize} subroutine allocates the module array and uses the
@@ -36,6 +36,6 @@ The following Fortran code allocates and deallocates a module array.  The
 then deallocates the array on the host.  Note, the stand-alone \code{target
 enter data} occurs after the host memory is allocated, and the \code{target
 exit data} construct occurs before the host data is deallocated.
-\ffreeexample{target_unstructured_data}{1f90}
+\ffreeexample{target_unstructured_data}{1}
 %end
 

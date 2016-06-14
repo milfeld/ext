@@ -436,52 +436,40 @@
 
 \newcommand{\escstr}[1]{\myreplace{_}{\_}{#1}}
 
-\def\exampleheader#1#2{%
+\def\exampleheader#1#2#3#4{%
    \ifthenelse{ \equal{#1}{} }{
       \def\cname{#2}
       \def\ename\cname
    }{
-      \def\cname{#1.#2}
+      \def\cname{#1.#2.#3}
 % Use following line for old numbering
-%      \def\ename{\thechapter.#2}
+%      \def\ename{\thechapter.#2.#3}
 % Use following for mneumonics
-      \def\ename{\escstr{#1}.#2}
+      \def\ename{\escstr{#1}.#2.#3}
    }
    \noindent
    \textit{Example \ename}
    %\vspace*{-3mm}
+   \code{\VerbatimInput[numbers=left,numbersep=5ex,firstnumber=1,firstline=#4,fontsize=\small]%
+   %\code{\VerbatimInput[numbers=left,firstnumber=1,firstline=#4,fontsize=\small]%
+   %\code{\VerbatimInput[firstline=#4,fontsize=\small]%
+      {sources/Example_\cname}} 
 }
 
 \def\cnexample#1#2{%
-   \exampleheader{#1}{#2}
-   \code{\VerbatimInput[numbers=left,numbersep=5ex,firstnumber=1,firstline=8,fontsize=\small]%
-   %\code{\VerbatimInput[numbers=left,firstnumber=1,firstline=8,fontsize=\small]%
-   %\code{\VerbatimInput[firstline=8,fontsize=\small]%
-      {sources/Example_\cname.c}} 
+   \exampleheader{#1}{#2}{c}{8}
 }
 
 \def\cppnexample#1#2{%
-   \exampleheader{#1}{#2}
-   \code{\VerbatimInput[numbers=left,numbersep=5ex,firstnumber=1,firstline=8,fontsize=\small]%
-   %\code{\VerbatimInput[numbers=left,firstnumber=1,firstline=8,fontsize=\small]%
-   %\code{\VerbatimInput[firstline=8,fontsize=\small]%
-      {sources/Example_\cname.cpp}} 
+   \exampleheader{#1}{#2}{cpp}{8}
 }
 
 \def\fnexample#1#2{%
-   \exampleheader{#1}{#2}
-   \code{\VerbatimInput[numbers=left,numbersep=5ex,firstnumber=1,firstline=6,fontsize=\small]%
-   %\code{\VerbatimInput[numbers=left,firstnumber=1,firstline=6,fontsize=\small]%
-   %\code{\VerbatimInput[firstline=6,fontsize=\small]%
-      {sources/Example_\cname.f}}
+   \exampleheader{#1}{#2}{f}{6}
 }
 
 \def\ffreenexample#1#2{%
-   \exampleheader{#1}{#2}
-   \code{\VerbatimInput[numbers=left,numbersep=5ex,firstnumber=1,firstline=6,fontsize=\small]%
-   %\code{\VerbatimInput[numbers=left,firstnumber=1,firstline=6,fontsize=\small]%
-   %\code{\VerbatimInput[firstline=6,fontsize=\small]%
-      {sources/Example_\cname.f90}}
+   \exampleheader{#1}{#2}{f90}{6}
 }
 
 \newcommand\cexample[2]{%
