@@ -28,13 +28,5 @@ use omp_lib, ONLY : omp_get_num_teams, omp_get_team_num
     sum = sum0 + sum1
 end function
 
-!  This source has been updated with the
- ! map(tofrom: sum0, sum1) clause on the target
- ! directive for correct execution within
- ! 4.5 implementations.
- !
- ! In 4.5 the sum0 and sum1 scalar variable default
- ! behavior is firstprivate, in pre-4.5
- ! the default behavior is map(tofrom: sum0,sum1).
-
-!
+! Note:  The variables sum0,sum1 are now mapped with tofrom, for correct 
+! execution with 4.5 (and pre-4.5) compliant compilers. See Devices Intro.

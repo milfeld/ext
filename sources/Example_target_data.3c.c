@@ -27,12 +27,7 @@ void gramSchmidt(float Q[][COLS], const int rows)
             Q[i][k] *= tmp;
     }
 }
-/* This source has been updated with the
-   map(tofrom: tmp) clause on the target
-   directive for correct execution within
-   4.5 implementations.
 
-   In 4.5 the tmp scalar variable default
-   behavior is firstprivate, in pre-4.5
-   the default behavior is map(tofrom: tmp).
-*/
+/* Note:  The variable tmp is now mapped with tofrom, for correct 
+   execution with 4.5 (and pre-4.5) compliant compilers. See Devices Intro. 
+ */
