@@ -14,8 +14,9 @@ float A[1000];
 float do_work(float *arr)
 {
   float pri;
+  int i;
 #pragma omp simd lastprivate(pri)
-  for (int i = 0; i < 999; ++i) {
+  for (i = 0; i < 999; ++i) {
     int j = P[i];
  
     pri = 0.5f;
@@ -31,8 +32,9 @@ float do_work(float *arr)
 int main(void)
 {
   float pri, arr[1000];
+  int i;
  
-  for (int i = 0; i < 1000; ++i) {
+  for (i = 0; i < 1000; ++i) {
      P[i]   = i;
      A[i]   = i * 1.5f;
      arr[i] = i * 1.8f;

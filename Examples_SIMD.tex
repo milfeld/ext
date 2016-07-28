@@ -114,9 +114,9 @@ version of the \plc{fib()} function.
 \label{sec:SIMD_forward_dep}
 
 
- The following example tests the restriction on an SIMD loop with the loop-carried lexical forward-dependence. This dependence must be preserved for the correct execution for SIMD loop.
+ The following example tests the restriction on an SIMD loop with the loop-carried lexical forward-dependence. This dependence must be preserved for the correct execution of SIMD loops.
 
-A loop can be vectorized even though the iterations are not completely independent when it has loop-carried dependences that are forward lexical dependences (indicated by the read of \plc{A[j+1]} to write \plc{A[j]}, or \plc{A(j+1)} and \plc{A(j)} in Fortran). That is, the read of \plc{A[j+1]} (or \plc{A(j+1)} in Fortran) before write to \plc{A[j]} (or \plc{A(j)} in Fortran) ordering must be preserved for each iteration \plc{j} as a valid SIMD code generation.
+A loop can be vectorized even though the iterations are not completely independent when it has loop-carried dependences that are forward lexical dependences, indicated in the code below by the read of \plc{A[j+1]} and the write to \plc{A[j]} in C/C++ code (or \plc{A(j+1)} and \plc{A(j)} in Fortran). That is, the read of \plc{A[j+1]} (or \plc{A(j+1)} in Fortran) before the write to \plc{A[j]} (or \plc{A(j)} in Fortran) ordering must be preserved for each iteration in \plc{j} for valid SIMD code generation.
 
 This test assures that the compiler preserves the loop carried lexical forward-dependence for generating a correct SIMD code.
 
