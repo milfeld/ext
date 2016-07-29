@@ -3,12 +3,15 @@
 \section{\code{target} \code{enter}/\code{exit} \code{data} Constructs}
 \label{sec:target_enter_exit_data}
 %\section{Simple target enter data and target exit data Constructs}
-While the "structured data" constructs provide persistent data on a 
+
+The structured data construct (\code{target data}) provides persistent data on a
 device for subsequent \code{target} constructs as shown in the 
-\code{target data} examples above, the "unstructure data" constructs 
-allow the creation and deletion of data on the device at any appropriate
-point within the host code, as shown below with the \code{target enter data} 
-and \code{target exit data} constructs.
+\code{target data} examples above. This is accomplished by creating a single
+\code{target data} region containing \code{target} constructs.
+
+The unstructure data constructs allow the creation and deletion of data on
+the device at any appropriate point within the host code, as shown below 
+with the \code{target enter data} and \code{target exit data} constructs.
 
 The following C++ code creates/deletes a vector in a constructor/destructor 
 of a class. The constructor creates a vector with \code{target enter data}

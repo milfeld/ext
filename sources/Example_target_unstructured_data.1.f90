@@ -12,11 +12,13 @@ module example
 
       allocate(A(N))
       !$omp target enter data map(alloc:A)
+
     end subroutine initialize
 
     subroutine finalize()
 
       !$omp target exit data map(delete:A)
       deallocate(A)
+
     end subroutine finalize
 end module example
