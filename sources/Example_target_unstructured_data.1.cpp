@@ -1,9 +1,13 @@
-// @@name:        target-unstructured-data.1.cpp
-// @@type:        C++
-// @@compilable:  yes
-// @@linkable:    no
-// @@expect:      success
-class Matrix {
+/*
+* @@name:        target-unstructured-data.1.cpp
+* @@type:        C++
+* @@compilable:  yes
+* @@linkable:    no
+* @@expect:      success
+*/
+
+class Matrix
+{
 
   Matrix(int n) {
     len = n;

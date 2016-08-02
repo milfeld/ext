@@ -7,11 +7,12 @@
 subroutine socket_init(socket_num)
    use omp_lib
    integer  :: socket_num, n_procs
+
    n_procs = omp_get_place_num_procs(socket_num)
    !$omp parallel num_threads(n_procs) proc_bind(close)
 
-   print*,"Reporting in from socket num, thread num: ",  &
-                             socket_num,omp_get_thread_num()
+      print*,"Reporting in from socket num, thread num: ",  &
+                                socket_num,omp_get_thread_num()
    !$omp end parallel
 end subroutine
 
@@ -24,8 +25,10 @@ program numa_teams
 
    n_sockets = omp_get_num_places()
    !$omp parallel num_threads(n_sockets) private(socket_num) &
-   !$omp&                                proc_bind(spread)
+   !$omp&         proc_bind(spread)
+
       socket_num = omp_get_place_num()
       call socket_init(socket_num)
+
    !$omp end parallel
 end program
