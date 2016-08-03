@@ -3,8 +3,8 @@
 
 In the example below a team of threads is generated on each socket of
 the system, using nested parallelism. Several query functions are used
-to gather information in the creation of the teams and reporting socket
-and thread identifiers.
+to gather information to support the creation of the teams and to obtain 
+socket and thread numbers.
 
 For proper execution of the code, the user must create a place partition, such that
 each place is a listing of the core numbers for a socket. For example,
