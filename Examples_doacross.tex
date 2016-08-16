@@ -6,16 +6,20 @@ An \code{ordered} clause can be used on a loop construct with an integer
 parameter argument to define the number of associated loops within 
 a \plc{doacross loop nest} where cross-iteration dependences exist.
 A \code{depend} clause on an \code{ordered} construct within an ordered 
-loop can be used to describe the dependences of the \plc{doacross loops}. 
+loop describes the dependences of the \plc{doacross} loops. 
 
 In the code below, the \code{depend(sink:i-1)} clause defines an \plc{i-1} 
 to \plc{i} cross-iteration dependence that specifies a wait point for 
 the completion of computation from iteration \plc{i-1} before proceeding 
 to the subsequent statements. The \code{depend(source)} clause indicates 
 when the current iteration satisfies the cross-iteration dependence.
-This example is equivalent to the use of the \code{ordered} 
-construct without a clause in place of 
-the \code{ordered} construct with the \code{depend} clause.
+%This example is equivalent to the use of the \code{ordered} 
+%construct without a clause in place of 
+%the \code{ordered} construct with the \code{depend} clause.
+For this example the same sequential ordering could have been achieved 
+with an \code{ordered} clause without a parameter on the loop directive, 
+and a single \code{ordered} directive without the \code{depend} clause
+specified for the statement executing the \plc{bar} function.
 
 \cexample{doacross}{1}
 
@@ -23,7 +27,7 @@ the \code{ordered} construct with the \code{depend} clause.
 
 The following code is similar to the previous example but with 
 \plc{doacross loop nest} extended to two nested loops, \plc{i} and \plc{j}, 
-as marked by the \code{ordered(2)} clause on the loop directive. 
+as specified by the \code{ordered(2)} clause on the loop directive. 
 In the C/C++ code, the \plc{i} and \plc{j} loops are the first and
 second associated loops, respectively, whereas
 in the Fortran code, the \plc{j} and \plc{i} loops are the first and
@@ -55,10 +59,11 @@ a deadlock as well since they may not start to execute until the current iterati
 
 
 The following example illustrates the use of the \code{collapse} clause for
-a doacross loop nest.  The \plc{i} and \plc{j} loops are the associated
-loops for the collapsed loop as well as for the doacross loop nest.
+a \plc{doacross loop nest}.  The \plc{i} and \plc{j} loops are the associated
+loops for the collapsed loop as well as for the \plc{doacross loop nest}.
 The example also shows a compliant usage of the dependence source
 directive being placed before the corresponding sink directive.
+Checking the completion of computation from previous iterations at the sink point can occur after the source statement.
 
 \cexample{doacross}{4}
 
