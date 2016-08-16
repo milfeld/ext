@@ -14,7 +14,7 @@ subroutine vec_mult(p,v1,v2,N)
    do i=1,N
       p(i) = v1(i) * v2(i)
    end do
-   call output(p, N)
    !$omp end target
+   call output(p, N)
 end subroutine
 end module
