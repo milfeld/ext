@@ -37,7 +37,7 @@ void vec_mult(float *p, float *v1, float *v2, int N)
       printf("8 threads on initial device\n");
       nthreads = 8;
    }
-   #pragma omp parallel for private(i) num_threads(nthreads);
+   #pragma omp parallel for private(i) num_threads(nthreads)
    for (i=0; i<N; i++)
      p[i] = v1[i] * v2[i];
 }

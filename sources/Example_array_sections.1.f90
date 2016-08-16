@@ -10,6 +10,6 @@ integer :: A(30)
      ! Cannot map distinct parts of the same array
      !$omp target map( A(8:27) )
         A(3) = 0
-     !$omp end target map
+     !$omp end target
    !$omp end target data
 end subroutine

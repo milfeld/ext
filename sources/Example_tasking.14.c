@@ -5,6 +5,8 @@
 * @@linkable:	no
 * @@expect:	success
 */
+void bar(void);
+
 void foo ( )
 {
    int i;

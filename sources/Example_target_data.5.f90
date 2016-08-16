@@ -11,7 +11,7 @@ integer           :: N,i
    call init(v1, v2, N)
    !$omp target data map(to: v1, v2) map(from: p0)
     call vec_mult(p0,v1,v2,N)
-   !omp end target data
+   !$omp end target data
    call output(p0, N)
 end subroutine
 subroutine vec_mult(p1,v3,v4,N)

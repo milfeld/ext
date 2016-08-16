@@ -5,6 +5,9 @@
 * @@linkable:	no
 * @@expect:	success
 */
+
+#define min(x, y) (((x) < (y)) ? (x) : (y))
+
 float dotprod(float B[], float C[], int N, int block_size,
   int num_teams, int block_threads)
 {

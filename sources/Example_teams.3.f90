@@ -12,8 +12,7 @@ function dotprod(B,C,N) result(sum)
       do i = 1,N
          sum = sum + B(i) * C(i)
       end do
-   !$omp end teams
-   !$omp end target
+   !$omp end target teams
 end function
 
 ! Note:  The variable sum is now mapped with tofrom, for correct 

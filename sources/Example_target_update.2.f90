@@ -22,9 +22,9 @@ subroutine vec_mult(p, v1, v2, N)
          end do
       !$omp end target
       changed = maybe_init_again(v1, N)
-      !$omp target if(changed) update to(v1(:N))
+      !$omp target update if(changed) to(v1(:N))
       changed = maybe_init_again(v2, N)
-      !$omp target if(changed) update to(v2(:N))
+      !$omp target update if(changed) to(v2(:N))
       !$omp target
          !$omp parallel do
          do i=1, N

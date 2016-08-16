@@ -11,6 +11,6 @@ integer,pointer :: p(:)
      !$omp target map( p(8:27) )
         A(3) = 0
         p(9) = 0
-     !$omp end target map
+     !$omp end target
    !$omp end target data
 end subroutine
