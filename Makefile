@@ -73,6 +73,7 @@ CHAPTERS=Title_Page.tex \
 	Examples_array_sections.tex \
 	Examples_device.tex \
 	Examples_associate.tex \
+	Examples_doacross.tex \
 	History.tex
 
 INTERMEDIATE_FILES=openmp-examples.pdf \
