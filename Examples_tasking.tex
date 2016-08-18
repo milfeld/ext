@@ -11,7 +11,7 @@ order, as in the sequential code, is wrong.
 
 \cexample{tasking}{1}
 
-\fexample{tasking}{1}
+\ffreeexample{tasking}{1}
 
 In the next example, we force a postorder traversal of the tree by adding a \code{taskwait} 
 directive. Now, we can safely assume that the left and right sons have been executed 
@@ -19,7 +19,7 @@ before we process the current node.
 
 \cexample{tasking}{2}
 
-\fexample{tasking}{2}
+\ffreeexample{tasking}{2}
 
 The following example demonstrates how to use the \code{task} construct to process 
 elements of a linked list in parallel. The thread executing the \code{single} 
@@ -30,7 +30,7 @@ clause.
 
 \cexample{tasking}{3}
 
-\fexample{tasking}{3}
+\ffreeexample{tasking}{3}
 
 The \code{fib()} function should be called from within a \code{parallel}  region 
 for the different specified tasks to be executed in parallel. Also, only one thread 
