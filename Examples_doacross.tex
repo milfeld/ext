@@ -12,12 +12,10 @@ In the code below, the \code{depend(sink:i-1)} clause defines an \plc{i-1}
 to \plc{i} cross-iteration dependence that specifies a wait point for 
 the completion of computation from iteration \plc{i-1} before proceeding 
 to the subsequent statements. The \code{depend(source)} clause indicates 
-when the current iteration satisfies the cross-iteration dependence.
-%This example is equivalent to the use of the \code{ordered} 
-%construct without a clause in place of 
-%the \code{ordered} construct with the \code{depend} clause.
+the completion of computation from the current iteration (\plc{i}) 
+to satisfy the cross-iteration dependence that arises from the iteration.
 For this example the same sequential ordering could have been achieved 
-with an \code{ordered} clause without a parameter on the loop directive, 
+with an \code{ordered} clause without a parameter, on the loop directive, 
 and a single \code{ordered} directive without the \code{depend} clause
 specified for the statement executing the \plc{bar} function.
 
@@ -62,7 +60,7 @@ The following example illustrates the use of the \code{collapse} clause for
 a \plc{doacross loop nest}.  The \plc{i} and \plc{j} loops are the associated
 loops for the collapsed loop as well as for the \plc{doacross loop nest}.
 The example also shows a compliant usage of the dependence source
-directive being placed before the corresponding sink directive.
+directive placed before the corresponding sink directive.
 Checking the completion of computation from previous iterations at the sink point can occur after the source statement.
 
 \cexample{doacross}{4}
