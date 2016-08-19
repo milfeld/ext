@@ -14,7 +14,7 @@ double precision    :: Q(rows,cols), tmp
            do i=1,rows
               tmp = tmp + (Q(i,k) * Q(i,k))
            end do
-        !$omp end target map(tofrom: tmp)
+        !$omp end target
 
           tmp = 1.0d0/sqrt(tmp)
 

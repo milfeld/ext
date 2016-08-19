@@ -1,9 +1,9 @@
 /*
 * @@name:	default_none.1c
 * @@type:	C
-* @@compilable:	yes
+* @@compilable:	no
 * @@linkable:	no
-* @@expect:	success
+* @@expect:	failure
 */
 #include <omp.h>
 int x, y, z[1000];

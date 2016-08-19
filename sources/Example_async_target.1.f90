@@ -23,7 +23,7 @@ end interface
 
    do C=1,N,CHUNKSZ
 
-      !$omp task
+      !$omp task shared(z)
       !$omp target map(z(C:C+CHUNKSZ-1))
       !$omp parallel do
          do i=C,C+CHUNKSZ-1

@@ -1,8 +1,8 @@
 ! @@name:	fort_do.2f
 ! @@type:	F-fixed
-! @@compilable:	yes
+! @@compilable:	no
 ! @@linkable:	no
-! @@expect:	success
+! @@expect:	failure
       SUBROUTINE WORK(I, J)
       INTEGER I,J
       END SUBROUTINE WORK

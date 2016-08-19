@@ -3,13 +3,15 @@
 ! @@compilable:	yes
 ! @@linkable:	no
 ! @@expect:	success
-       module example
-       include 'omp_lib.h'
-       integer (kind=omp_lock_kind) lock
-       integer i
-       contains
-       subroutine work
-       call omp_init_lock(lock)
+      module example
+      include 'omp_lib.h'
+      integer (kind=omp_lock_kind) lock
+      integer i
+
+      contains
+
+      subroutine work
+      call omp_init_lock(lock)
 !$omp parallel
      !$omp do
       do i=1,100
@@ -27,4 +29,5 @@
 !$omp end parallel
       call omp_destroy_lock(lock)
       end subroutine
+
       end module

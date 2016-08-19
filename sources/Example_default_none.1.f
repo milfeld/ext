@@ -1,8 +1,8 @@
 ! @@name:	default_none.1f
 ! @@type:	F-fixed
-! @@compilable:	yes
+! @@compilable:	no
 ! @@linkable:	no
-! @@expect:	success
+! @@expect:	failure
       SUBROUTINE DEFAULT_NONE(A)
       INCLUDE "omp_lib.h"     ! or USE OMP_LIB
 

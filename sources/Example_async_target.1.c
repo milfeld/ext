@@ -18,7 +18,7 @@ void pipedF()
    init(Z, N);
    for (C=0; C<N; C+=CHUNKSZ)
    {
-      #pragma omp task
+      #pragma omp task shared(Z)
       #pragma omp target map(Z[C:CHUNKSZ])
       #pragma omp parallel for
       for (i=0; i<CHUNKSZ; i++)
