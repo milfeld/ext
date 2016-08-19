@@ -5,7 +5,6 @@
 * @@linkable:    no
 * @@expect:      success
 */
-
 class Matrix
 {
 
