@@ -14,11 +14,13 @@ program linear_loop
    end do
 
    j = 0
-   !$omp parallel do linear(j:1)
+   !$omp parallel
+   !$omp do linear(j:1)
    do i = 1, N, 2
       j = j + 1
       b(j) = a(i) * 2.0
    end do
+   !$omp end parallel
 
    print *, j, b(1), b(j)
    ! print out: 50 2.0 198.0

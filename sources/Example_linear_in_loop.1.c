@@ -17,7 +17,8 @@ int main(void)
       a[i] = i + 1;
 
    j = 0;
-   #pragma omp parallel for linear(j:1)
+   #pragma omp parallel
+   #pragma omp for linear(j:1)
    for ( i = 0; i < N; i += 2 ) {
       b[j] = a[i] * 2.0f;
       j++;
