@@ -10,8 +10,10 @@
    integer ::  i, idev
    !$omp declare target (init)
 
+   !$omp target data map(v1,v2)
+
    !$omp task shared(v1,v2) depend(out: N)
-      !$omp target device(idev) map(v1,v2)
+      !$omp target device(idev)
          if( omp_is_initial_device() ) &
             stop "not executing on target device"
          allocate(v1(N), v2(N))
@@ -22,7 +24,7 @@
    call foo()  ! execute other work asychronously
 
    !$omp task shared(v1,v2,p) depend(in: N)
-      !$omp target device(idev) map(to: v1,v2) map(from: p)
+      !$omp target device(idev) map(from: p)
          if( omp_is_initial_device() ) &
             stop "not executing on target device"
          !$omp parallel do
@@ -35,6 +37,9 @@
    !$omp end task
 
    !$omp taskwait
+
+   !$omp end target data
+
    call output(p, N)
 
 end subroutine
