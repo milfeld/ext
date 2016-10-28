@@ -2,15 +2,15 @@
 \chapter{Synchronization}
 \label{chap:synchronization}
 
-The \code{barrier} construct is a stand-alone directive that forces all threads
+The \code{barrier} construct is a stand-alone directive that requires all threads
 of a team (within a contention group) to execute the barrier and complete
-execution all tasks within the region, before continuing past the barrier.
+execution of all tasks within the region, before continuing past the barrier.
 
-The \code{critical} construct is a directive and contains a structured block. 
+The \code{critical} construct is a directive that contains a structured block. 
 The construct allows only a single thread at a time to execute the structured block (region).
-Multiple critical regions may exist in a binding parallel region, and may
-act cooperatively (only one thread at a time in any \code{critical} region),
-or as separate (only one thread at a time in each \code{critical} regions when
+Multiple critical regions may exist in a parallel region, and may
+act cooperatively (only one thread at a time in all \code{critical} regions),
+or separately (only one thread at a time in each \code{critical} regions when
 a unique name is supplied on each \code{critical} construct.
 An optional (lock) hint clause may be specified on a named \code{critical} 
 construct to provide the OpenMP runtime guidance in selection an locking 
@@ -20,9 +20,9 @@ On a finer scale the \code{atomic} construct allows only a single thread at
 a time to have atomic access to a storage location involving a single read, 
 write, update or capture statement, and a limited number of combinations 
 when specifying the \code{capture} \plc{atomic-clause} clause.  The \plc{atomic-clause}
-are required for some expression statements, but are not required for 
+is required for some expression statements, but are not required for 
 \code{update} statements. Please see the details in the \plc{atomic Construct} 
-Subsection of the \plc{Directives} Chapter in the OpenMP Specifications document.
+subsection of the \plc{Directives} chapter in the OpenMP Specifications document.
 
 % The following three sentences were stolen from the spec.
 The \code{ordered} construct either specifies a structured block in a loop, 
@@ -54,13 +54,13 @@ The semantics allows a task to \plc{set}, and hence
 \plc{nestible} lock can be set multiple times by a task, and is used
 when in code requires nested control of locks.  A \plc{simple lock} can
 only be set once by the owning task. There are specific calls for the two
-types of tasks, and the variable of a specific lock type cannot be used the
+types of locks, and the variable of a specific lock type cannot be used by the
 other lock type.  
 
 Any explicit task will observe the synchronization prescribed in a 
-\code{barrier} construct.  Also, additional synchronizations are available for tasks.
-All children of a task will wait at a \code{taskwait} for their siblings
-to complete.  A \code{taskgroup} construct creates a region in which the
+\code{barrier} construct and an implied barrier.  Also, additional synchronizations 
+are available for tasks.  All children of a task will wait at a \code{taskwait} (for 
+their siblings to complete).  A \code{taskgroup} construct creates a region in which the
 current task is suspended at the end of the region until all sibling tasks, 
 and their descendants, have completed. 
 Scheduling contraints on task execution can be prescribed by the \code{depend}
