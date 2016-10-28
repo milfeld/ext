@@ -5,9 +5,9 @@
 Tasking constructs provide units of work to a thread for execution.  
 Worksharing constructs (e.g. \code{for}, \code{do}, \code{single} constructs) do this, too; 
 but the work units are tightly controlled by an iteration limit and limited 
-scheduling, or a limited number of \code{single} regions. Worsharing was designed 
-with "data parallel" computing in mind.  Tasking was designed for 
-"task parallel" computing and often involves non-locality or irregularity 
+scheduling, or a limited number of \code{single} regions. Worksharing was designed 
+with \texttt{"}data parallel\texttt{"} computing in mind.  Tasking was designed for 
+\texttt{"}task parallel\texttt{"} computing and often involves non-locality or irregularity 
 in memory access.
 
 The \code{task} construct can be used to execute work chunks: in a while loop; 
@@ -35,14 +35,14 @@ control of threads for work balance and forward progress.
 Once a thread starts executing a task, it is the designated thread 
 for executing the task to completion, even though it may leave the
 execution at a scheduling point and return later.  The thread is tied
-to the task.  Users can introduce scheduling points with the \code{taskyield}
+to the task.  Scheduling points can be introduced with the \code{taskyield}
 construct.  With an \code{untied} clause any other thread is allowed to continue
-the task.  The if clause allows the generating thread to immediately
-execute the task, as an undeferred task.  By including the data 
-environment of the generating task into the generated task with the 
+the task.  The \code{if} clause allows the generating thread to immediately
+execute the task as an undeferred task, and the clause expression evaluates to true.
+By including the data environment of the generating task into the generated task with the 
 \code{mergeable} and \code{final clauses}, task generation overhead can be reduced.
 
 A complete list of the tasking constructs and details of their clauses
-can be found in the Tasking Constructs chapter of the OpenMP specification,
-OpenMP Application Programming Interface.
+can be found in the \plc{Tasking Constructs} chapter of the OpenMP Specifications,
+in the \plc{OpenMP Application Programming Interface} section.
 
