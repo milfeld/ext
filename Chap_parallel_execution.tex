@@ -9,14 +9,14 @@ region consisting of an implicit task executed by the \plc{initial thread}.
 A \code{parallel} construct encloses code, 
 forming a parallel region.  An \plc{initial thread} encountering a \code{parallel} 
 region forks (creates) a team (set) of threads at the beginning of the 
-\code{parallel} region, and joins them (removes from exection) at the 
+\code{parallel} region, and joins them (removes from execution) at the 
 end of the region.  The initial task becomes the master thread of the team in a 
 \code{parallel} region with a \plc{thread} number equal to zero, the other 
 threads are numbered from 1 to number of threads minus 1. 
 A team may be comprised of just a single thread.
 
 Each thread of a team is assigned an implicit task consisting of code within the 
-parallel region. The task that creates a parallel region is suspended  while the
+parallel region. The task that creates a parallel region is suspended while the
 tasks of the team are executed.  A thread is tied to its task; that is,
 only the thread assigned to the task can execute that task.  After completion 
 of the \code{parallel} region, the master thread resumes execution of the generating task.  
@@ -25,51 +25,51 @@ of the \code{parallel} region, the master thread resumes execution of the genera
 %thread again, and continues to execute the \plc{sequential part}.  
 
 Any task within a \code{parallel} region is allowed to encounter another
-\code{parallel region} to form a nested \code{parallel} region. The 
+\code{parallel} region to form a nested \code{parallel} region. The 
 parallelism of a nested \code{parallel} region (whether is forks additional 
-threads, or is executed serially by the encountering task) is controlled by the
+threads, or is executed serially by the encountering task) can be controlled by the
 \code{OMP\_NESTED} environment variable or the \code{omp\_set\_nested()} 
 API routine with arguments indicating true or false.
 
-Worksharing Constructs form regions in which there is an implied barrier at
+The number of threads of a \code{parallel} region can be set by the \code{OMP\_NUM\_THREADS}
+environment, or on the \code{parallel} directive with the \code{num\_threads}
+clause, which will override the environment variable. Often the number of threads
+is set to the number of cores or hardware threads available.  Use the \code{OMP\_DYNAMIC}
+or the \code{omp\_set\_dynamic()} API function to specify that the OpenMP
+implementation determine and set (dynamically adjust) the number of threads for
+\code{parallel} regions.  The default setting for dynamic adjustment is implementation
+defined. When dynamic adjustment is on and the number of threads is specified,
+the number of threads becomes an upper limit for the number of threads to be
+provided by the OpenMP runtime.
+
+WORKSHARING CONSTRUCTS
+
+Worksharing constructs form regions in which there is an implied barrier at
 the end of the region (there is no barrier at the beginning). The worksharing
 constructs are:
 
-\begin{itemize}
+\begin{compactitem}
 
 \item loop constructs: {\code{for} and \code{do} }
 \item \code{sections}
 \item \code{single}
 \item \code{workshare}
 
-\end{itemize}
-
-%   would like to break this into sections
+\end{compactitem}
 
 The \code{for} and \code{do} constructs (loop constructs) create a region 
 consisting of a loop.  A loop controlled by a loop construct is called 
 an \plc{associated} loop.  Nested loops can form a single region when the 
-\code{collapse(\#)} clause designates more than one \plc{associated} loop
-to be executed in parallel, by forming a "single iteration space" for 
-the specified number of nested loops.  The \code{ordered(\#)} clause can 
-also control multiple associated loops.
+\code{collapse} clause (with an integer argument) designates the number of 
+\plc{associated} loops to be executed in parallel, by forming a 
+"single iteration space" for the specified number of nested loops.  
+The \code{ordered} clause can also control multiple associated loops.
 
 An associated loop must adhere to a "canonical form" (specified in the 
 \plc{Canonical Loop Form} of the OpenMP Specifications document) which allows the 
 iteration count (of all associated loops) to be computed before the 
 (outermost) loop is executed. %[58:27-29].  
 Most common loops comply with the canonical form, including C++ iterators.
-
-The number of threads of a \code{parallel} region can be set by the \code{OMP\_NUM\_THREADS}
-environment, or on the \code{parallel} directive with the \code{num\_threads}
-clause, which will override the environment variable. Often the number of threads
-is set to the number of cores or hardware threads available.  Use the OMP\_DYNAMIC
-or the \code{omp\_set\_dynamic()} API function to specify that the OpenMP 
-implementation determine and set (dynamically adjust) the number of threads for 
-\code{parallel} regions.  The default setting for dynamic adjustment is implemention 
-defined. When dynamic adjustment is on and the number of threads is specified,
-the number of threads becomes an upper limit for the number of threads to be
-provided by the OpenMP runtime.
 
 A \code{single} construct forms a region in which only one thread (any one 
 of the team) executes the region. 
@@ -89,29 +89,31 @@ barrier at the end, unless the \code{nowait} clause is specified.
 The \code{workshare} construct is a Fortran feature that consists of a
 region with a single structure block (section of code). Statements in the
 \code{workshare} region are divided into units of work, and executed (once)
-by threads of the team.  The control part of the Fortran \code{where} and 
-\code{forall} statements are executed first before the control is applied 
-to the (operation) statement.
+by threads of the team.  
 
-In a \code{workshare} region the execution of a statement occurs 
-(or appears to occur) before subsequent statements, and the evaluation 
-of a the right-hand side of a assignment must complete 
-(or appear to complete) prior to the assignment operation.
+The following Fortran constructs and statements can be used in a code{workshare} region:
 
-The following Fortran constructs and statements can be used in a workshared region:
-
-\begin{itemize}
-
-\item Fortran array (and scalar) assigments
+\begin{compactitem}
+\item Fortran array (and scalar) assignments
 \item Fortran \code{where} construct
 \item Fortran \code{forall} construct
 \item \code{atomic} and \code{critical} as a single unit of work
 \item elemental functions as a single unit of work
 \item intrinsic functions which transform arrays
+\end{compactitem}
 
-\end{itemize}
+
+In a \code{workshare} region the execution of a statement occurs 
+(or is implementation as if to occur) before subsequent statements, and the evaluation 
+of a the right-hand side of a assignment must complete 
+(or implemented as if to complete) prior to the assignment operation.
+The control part of the Fortran \code{where} and 
+\code{forall} statements are executed first before the control is applied 
+to the (operation) statement.
+
+MASTER CONSTRUCT
 
 The \code{master} construct is not a worksharing construct.  The master region is
 is executed only by the master thread. There is no implicit barrier (and flush) 
-at the end of the master region; hence the other threads of the team continue
-execution beyond code statements beyond the master region.
+at the end of the \code{master} region; hence the other threads of the team continue
+execution beyond code statements beyond the \code{master} region.
