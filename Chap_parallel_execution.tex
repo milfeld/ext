@@ -8,9 +8,9 @@ region consisting of an implicit task executed by the \plc{initial thread}.
 
 A \code{parallel} construct encloses code, 
 forming a parallel region.  An \plc{initial thread} encountering a \code{parallel} 
-region forks (creates) a team (set) of threads at the beginning of the 
+region forks (creates) a team of threads at the beginning of the 
 \code{parallel} region, and joins them (removes from execution) at the 
-end of the region.  The initial task becomes the master thread of the team in a 
+end of the region.  The initial thread becomes the master thread of the team in a 
 \code{parallel} region with a \plc{thread} number equal to zero, the other 
 threads are numbered from 1 to number of threads minus 1. 
 A team may be comprised of just a single thread.
@@ -26,17 +26,18 @@ of the \code{parallel} region, the master thread resumes execution of the genera
 
 Any task within a \code{parallel} region is allowed to encounter another
 \code{parallel} region to form a nested \code{parallel} region. The 
-parallelism of a nested \code{parallel} region (whether is forks additional 
+parallelism of a nested \code{parallel} region (whether it forks additional 
 threads, or is executed serially by the encountering task) can be controlled by the
 \code{OMP\_NESTED} environment variable or the \code{omp\_set\_nested()} 
 API routine with arguments indicating true or false.
 
 The number of threads of a \code{parallel} region can be set by the \code{OMP\_NUM\_THREADS}
-environment, or on the \code{parallel} directive with the \code{num\_threads}
-clause, which will override the environment variable. Often the number of threads
-is set to the number of cores or hardware threads available.  Use the \code{OMP\_DYNAMIC}
-or the \code{omp\_set\_dynamic()} API function to specify that the OpenMP
-implementation determine and set (dynamically adjust) the number of threads for
+environment variable, the \code{omp\_set\_num\_threads()} routine, or on the \code{parallel} 
+directive with the \code{num\_threads}
+clause. The routine overrides the environment variable, and the clause overrides all. 
+Use the \code{OMP\_DYNAMIC}
+or the \code{omp\_set\_dynamic()} function to specify that the OpenMP
+implementation dynamically adjust the number of threads for
 \code{parallel} regions.  The default setting for dynamic adjustment is implementation
 defined. When dynamic adjustment is on and the number of threads is specified,
 the number of threads becomes an upper limit for the number of threads to be
@@ -44,8 +45,10 @@ provided by the OpenMP runtime.
 
 WORKSHARING CONSTRUCTS
 
-Worksharing constructs form regions in which there is an implied barrier at
-the end of the region (there is no barrier at the beginning). The worksharing
+A worksharing construct distributes the execution of the associated region
+among the members of the team that encounter it.  There is an
+implied barrier at the end of the worksharing region
+(there is no barrier at the beginning). The worksharing
 constructs are:
 
 \begin{compactitem}
@@ -90,26 +93,6 @@ The \code{workshare} construct is a Fortran feature that consists of a
 region with a single structure block (section of code). Statements in the
 \code{workshare} region are divided into units of work, and executed (once)
 by threads of the team.  
-
-The following Fortran constructs and statements can be used in a code{workshare} region:
-
-\begin{compactitem}
-\item Fortran array (and scalar) assignments
-\item Fortran \code{where} construct
-\item Fortran \code{forall} construct
-\item \code{atomic} and \code{critical} as a single unit of work
-\item elemental functions as a single unit of work
-\item intrinsic functions which transform arrays
-\end{compactitem}
-
-
-In a \code{workshare} region the execution of a statement occurs 
-(or is implementation as if to occur) before subsequent statements, and the evaluation 
-of a the right-hand side of a assignment must complete 
-(or implemented as if to complete) prior to the assignment operation.
-The control part of the Fortran \code{where} and 
-\code{forall} statements are executed first before the control is applied 
-to the (operation) statement.
 
 MASTER CONSTRUCT
 
