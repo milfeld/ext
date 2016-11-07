@@ -1,5 +1,120 @@
 \pagebreak
 \chapter{Data Environment}
 \label{chap:data_environment}
+In OpenMP a \plc{data environment} contains data attributes of variables and
+objects.  The constructs for \code{parallel}, \code{simd}, task generating, worksharing,
+\code{target} and \code{teams} regions accept clauses to control \plc{data-sharing} attributes
+of referenced variables in the construct, where \plc{data-sharing} applies to
+whether the attribute of the variable is \plc{shared}
+(visible to all threads in a team), is \plc{private} (visible to a single thread)
+storage, or has special operational characteristics 
+from \code{firstprivate}, \code{lastprivate}, \code{linear}, or \code{reduction} clauses.
 
-Chapter introduction for Data Environment.
+The data environment for a device (distinguished as a \plc{device data environment})
+is controlled on the host by \plc{data-mapping} attributes, which determine the
+relationship of the data on the host, the \plc{original} data, and the data on the
+device, the \plc{corresponding} data.
+
+%\hspace{0.25in}\textbf{DATA-SHARING}
+%\nolinenumbers\line(1,0){400}\\[.4\baselineskip]
+%\hspace{1.6in}{\textbf{DATA-SHARING}}\\[-0.5\baselineskip]
+% \line(1,0){400}\linenumbers
+%\line(1,0){400}\\[.2\baselineskip]
+%\hspace{1.6in}{\textbf{DATA-SHARING}}\\[-0.2\baselineskip]
+%\line(1,0){400}
+\line(1,0){400}
+\hspace{1.6in}{\textbf{DATA-SHARING}}
+\line(1,0){400}
+
+Variable attributes can be classified as having \plc{predetermined}
+\plc{explicitly determined} or \plc{implicitly determined} data-sharing attributes.
+
+\textbf{Implicitly Determined Attributes}:\newline
+Variables with implicitly determined data-sharing attributes are those
+that are referenced in a given construct, do not have predetermined
+data-sharing attributes, and are not listed in a data-sharing
+attribute clause of an enclosing construct*.
+(e.g. a variable which appears in the data-sharing \code{private} clause,
+or a loop index of an associated loop of a \code{for/do} construct does
+not have an implicitly determined data-sharing attribute.)
+
+Four commonly encountered implicitly determined data-sharing attributes* are:
+\begin{quote}
+         Variables are shared for \code{parallel} construct variables.
+
+         The \code{default} clause can change the implicitly determined
+         data-sharing attribute to \code{shared} or \code{none}
+         (plus, \code{private} or \code{firstprivate} in Fortran code).
+
+         A private variable in the context at task 
+         generation becomes firstprivate for the \code{task}.
+         Please see details in the OpenMP Specifications document.
+
+         Scalar and C/C++ pointer variables in an \code{target} 
+         construct are \code{firstprivate}.
+\end{quote}
+
+\textbf{Explicitly Determined Attributes}:\newline
+Variables with explicitly determined data-sharing attributes are those that are
+referenced in a given construct and are listed in a data-sharing attribute
+clause on the construct (and are not an exception of a variable with
+a predetermined data-sharing attribute in a data-sharing clause). 
+Data-sharing clauses are: \code{shared}, \code{private},
+\code{first/lastprivate}, \code{linear}, and \code{reduction}.
+
+\textbf{Predetermined Attributes}:\newline
+A complete list of variables and objects with predetermined attributes is
+presented in the
+\plc{Data-sharing Attribute Rules for Variables Referenced in a Construct}
+subsection of the OpenMP Specifications document.  
+Some of the commonly found variables and objects, and their predefined data-sharing attributes are:
+private and linear for associated loop variables (indices of \code{for/do}
+and \code{simd} constructs);  private for automatic storage (C/C++); shared for
+static, static data members and dynamic storage in C/C++ codes; firstprivate
+for an array section pointer variable (not the storage) in \code{map} clauses;
+private for Fortran loop variable in sequential loop or task generating construct;
+and shared for assumed-size arrays.
+The data-sharing attributes of variables with predefined
+attributes can not be listed in a data-sharing clause; but there are some
+exceptions (mainly concerning loop iteration variables).
+
+%\hspace{0.25in}\textbf{DATA-MAPPING}
+%\nolinenumbers\line(1,0){400}\\[.4\baselineskip]
+%\hspace{1.6in}{\textbf{DATA-MAPPING}}\\[-0.5\baselineskip]
+%\line(1,0){400}\linenumbers
+%\line(1,0){400}\\[.2\baselineskip]
+%\hspace{1.6in}{\textbf{DATA-MAPPING}}\\[-0.2\baselineskip]
+%\line(1,0){400}
+\line(1,0){400}
+\hspace{1.6in}{\textbf{DATA-MAPPING}}
+\line(1,0){400}
+
+The \code{map} clause on a device construct explictly specifies how the list items in
+the clause are mapped from the encountering task's data environment (on the host)
+to the corresponding item in the device data environment (on the device).
+The common \plc{list items} are arrays, array sections, scalars, pointers, and
+structure elements (members). 
+
+Procedures and global variables have predetermined data mapping if they appear
+within the list or block of a \code{declare target} directive. Also, a C/C++ pointer
+is mapped as a zero-length array section, as is a C++ variable that is a reference to a pointer.
+% Waiting for response from Eric on this.
+
+Without explict mapping, non-scalar/pointer variables within the scope of the \code{target}
+construct are implicitly mapped with a \plc{map-type} of \code{tofrom}.
+Without explicit mapping, scalar variables within the scope of the \code{target}
+construct are not mapped, but have an implicit firstprivate data-sharing
+attribute. (That is, the value of the original variable is given to a private
+variable of the same name on the device.) This behavior can be changed with
+the \code{defaultmap} clause.
+
+The \code{map} clause can appear on \code{target}, \code{target data} and 
+\code{target enter/exit data} constructs.  The operations of creation and
+removal of device storage as well as assignment of the original list item 
+values to the corresponding list items may be complicated when the list 
+item appears on multiple constructs or when the host and device storage 
+is shared. In these cases the item's reference count, the number of times
+it has been referenced (+1 on entry and -1 on exited) in nested (structured)
+map regions and/or accumulative (unstructured) mappings, determines the operation.
+Details of the \code{map} clause and reference count operation are specified 
+in the \code{map Clause} subsection of the OpenMP Specifications document.
