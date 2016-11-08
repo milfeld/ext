@@ -11,15 +11,15 @@ The construct allows only a single thread at a time to execute the structured bl
 Multiple critical regions may exist in a parallel region, and may
 act cooperatively (only one thread at a time in all \code{critical} regions),
 or separately (only one thread at a time in each \code{critical} regions when
-a unique name is supplied on each \code{critical} construct.
-An optional (lock) hint clause may be specified on a named \code{critical} 
-construct to provide the OpenMP runtime guidance in selection an locking 
+a unique name is supplied on each \code{critical} construct).
+An optional (lock) \code{hint} clause may be specified on a named \code{critical} 
+construct to provide the OpenMP runtime guidance in selection a locking 
 mechanism.
 
 On a finer scale the \code{atomic} construct allows only a single thread at 
 a time to have atomic access to a storage location involving a single read, 
 write, update or capture statement, and a limited number of combinations 
-when specifying the \code{capture} \plc{atomic-clause} clause.  The \plc{atomic-clause}
+when specifying the \code{capture} \plc{atomic-clause} clause.  The \plc{atomic-clause} clause
 is required for some expression statements, but are not required for 
 \code{update} statements. Please see the details in the \plc{atomic Construct} 
 subsection of the \plc{Directives} chapter in the OpenMP Specifications document.
@@ -34,8 +34,8 @@ Since OpenMP 4.5 the \code{ordered} construct can also be a stand-alone
 directive that specifies cross-iteration dependences in a doacross loop nest.  
 The \code{depend} clause uses a \code{sink} \plc{dependence-type}, along with a 
 iteration vector argument (vec) to indicate the iteration that satisfies the 
-dependence.  The \code{depend} clause with a \code{source} and 
-\plc{dependence-types} specify dependence satisfication. 
+dependence.  The \code{depend} clause with a \code{source}
+\plc{dependence-type} specifies dependence satisfaction.
 
 The \code{flush} directive is a stand-alone construct that forces a thread's 
 temporal local storage (view) of a variable to memory where a consistent view
@@ -51,7 +51,7 @@ General-purpose routines provide mutual exclusion semantics through locks,
 represented by lock variables.  
 The semantics allows a task to \plc{set}, and hence 
 \plc{own} a lock, until it is \plc{unset} by the task that set it. A 
-\plc{nestible} lock can be set multiple times by a task, and is used
+\plc{nestable} lock can be set multiple times by a task, and is used
 when in code requires nested control of locks.  A \plc{simple lock} can
 only be set once by the owning task. There are specific calls for the two
 types of locks, and the variable of a specific lock type cannot be used by the
@@ -63,7 +63,7 @@ are available for tasks.  All children of a task will wait at a \code{taskwait} 
 their siblings to complete).  A \code{taskgroup} construct creates a region in which the
 current task is suspended at the end of the region until all sibling tasks, 
 and their descendants, have completed. 
-Scheduling contraints on task execution can be prescribed by the \code{depend}
+Scheduling constraints on task execution can be prescribed by the \code{depend}
 clause to enforce dependence on previously generated tasks.
 More details on controlling task executions can be found in the \plc{Tasking} Chapter
 in the OpenMP Specifications document. %(DO REF. RIGHT.)
