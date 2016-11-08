@@ -2,10 +2,10 @@
 \chapter{OpenMP Affinity}
 \label{chap:openmp_affinity}
 
-OpenMP Affinity consists of a proc bind policy (binding policy) and a specification of
+OpenMP Affinity consists of a \code{proc\_bind} policy (thread affinity policy) and a specification of
 places (\texttt{"}location units\texttt{"} or \plc{processors} that may be cores, hardware
 threads, sockets, etc.).  
-OpenMP Affinity enables users to distribute computations on specific places.
+OpenMP Affinity enables users to bind computations on specific places.
 The placement will hold for the duration of the parallel region. 
 However, the runtime is free to migrate the OpenMP threads 
 to different cores (hardware threads, sockets, etc.) prescribed within a given place, 
@@ -13,8 +13,8 @@ if two or more cores (hardware threads, sockets, etc.) have been assigned to a g
 
 Often the binding can be managed without resorting to explicitly setting places.
 Without the specification of places in the \code{OMP\_PLACES} variable, 
-the OpenMP runtime will distribute threads over the entire range of processors for 
-an OpenMP program, according to the \code{OMP\_PROC\_BIND} environment variable
+the OpenMP runtime will distribute and bind threads using the entire range of processors for 
+the OpenMP program, according to the \code{OMP\_PROC\_BIND} environment variable
 or the \code{proc\_bind} clause.  When places are specified, the OMP runtime
 binds threads to the places according to a default distribution policy, or
 those specified in the \code{OMP\_PROC\_BIND} environment variable or the
@@ -37,20 +37,20 @@ compiler options, library-specific environment variables, or default
 kernel settings.  For instance, the execution of multiple MPI processes,
 launched on a single compute node, will each have a subset of processors as
 determined by the MPI launcher or set by MPI affinity environment 
-variables for the MPI library.  Forked threads within an MPI process
-(for a hybrid execution of MPI and OpenMP code) inherit the valid 
-processor set for execution from the parent process (the initial task region) 
-when a parallel region forks threads.  The binding policy set in 
-\code{OMP\_PROC\_BIND} or the \code{proc\_bind} clause will be applied to 
-the subset of processors available to \plc{the particular} MPI process.
+variables for the MPI library.  %Forked threads within an MPI process
+%(for a hybrid execution of MPI and OpenMP code) inherit the valid 
+%processor set for execution from the parent process (the initial task region) 
+%when a parallel region forks threads.  The binding policy set in 
+%\code{OMP\_PROC\_BIND} or the \code{proc\_bind} clause will be applied to 
+%the subset of processors available to \plc{the particular} MPI process.
 
-Also, setting an explicit list of processor numbers in the \code{OMP\_PLACES} 
-variable before an MPI launch (which involves more than one MPI process) will
-result in unspecified behavior (and doesn't make sense) because the set of 
-processors in the places list must not contain processors outside the subset 
-of processors for an MPI process. A separate \code{OMP\_PLACES} variable must
-be set for each MPI process, and is usually accomplished by launching a script 
-which sets \code{OMP\_PLACES} specifically for the MPI process. 
+%Also, setting an explicit list of processor numbers in the \code{OMP\_PLACES} 
+%variable before an MPI launch (which involves more than one MPI process) will
+%result in unspecified behavior (and doesn't make sense) because the set of 
+%processors in the places list must not contain processors outside the subset 
+%of processors for an MPI process. A separate \code{OMP\_PLACES} variable must
+%be set for each MPI process, and is usually accomplished by launching a script 
+%which sets \code{OMP\_PLACES} specifically for the MPI process. 
 
 Threads of a team are positioned onto places in a compact manner, a 
 scattered distribution, or onto the master's place, by setting the 
