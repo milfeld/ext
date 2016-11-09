@@ -28,3 +28,11 @@ old
 *-blx.bib
 *.run.xml
 
+# ignore typical backup files  (Michael Klemm request)
+*~
+*.bak
+*.[0-9]
+
+# ignore compiler outputs (Michael Klemm request)
+*.o
+*.obj
