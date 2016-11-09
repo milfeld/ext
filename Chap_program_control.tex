@@ -13,7 +13,7 @@ of stand-alone directives (such as \code{flush}, \code{barrier}, \code{taskwait}
 and  \code{taskyield}).
 However, the directives must appear in a block structure, and not as a substatement as shown in examples 1 and 2 of this chapter.
 
-
+\bigskip
 CANCELLATION
 
 Cancellation (termination) of the normal sequence of execution for the threads in an OpenMP region can
@@ -39,6 +39,7 @@ task region. Any task of the taskgroup that has already begun execution will run
 unless it encounters a \code{cancellation point}; tasks that have not begun execution "may" be
 discarded as completed tasks.
 
+\bigskip
 CONTROL VARIABLES 
 
   Internal control variables (ICV) are used by implementations to hold values which control the execution
@@ -55,7 +56,8 @@ CONTROL VARIABLES
  %relationships and scoping information can be found for applying user specifications and understanding the 
  %extent of the control.
 
-NESTED CONSTRUCTS:
+\bigskip
+NESTED CONSTRUCTS
 
 Certain combinations of nested constructs are permitted, giving rise to a \plc{combined} construct
 consisting of two or more constructs.  These can be used when the two (or several) constructs would be used

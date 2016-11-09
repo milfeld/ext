@@ -2,27 +2,27 @@
 \chapter{Data Environment}
 \label{chap:data_environment}
 The OpenMP \plc{data environment} contains data attributes of variables and
-objects.  Many constructs (such as, \code{parallel}, \code{simd}, \code{task}) 
+objects.  Many constructs (such as \code{parallel}, \code{simd}, \code{task}) 
 accept clauses to control \plc{data-sharing} attributes
 of referenced variables in the construct, where \plc{data-sharing} applies to
 whether the attribute of the variable is \plc{shared}, 
 is \plc{private} storage, or has special operational characteristics 
-(as found in the \code{firstprivate}, \code{lastprivate}, \code{linear}, or \code{reduction} clauses).
+(as found in the \code{firstprivate}, \code{lastprivate}, \code{linear}, or \code{reduction} clause).
 
 The data environment for a device (distinguished as a \plc{device data environment})
 is controlled on the host by \plc{data-mapping} attributes, which determine the
 relationship of the data on the host, the \plc{original} data, and the data on the
 device, the \plc{corresponding} data.
-\newline
 
+\bigskip
 DATA-SHARING ATTRIBUTES
 
 Data-sharing attributes of variables can be classified as being \plc{predetermined},
 \plc{explicitly determined} or \plc{implicitly determined}.
 
-Certain variables and objects have \plc{predetermined} attributes.  
+Certain variables and objects have predetermined attributes.  
 A commonly found case is the loop iteration variable in associated loops 
-of a \code{for} or \code{do} construct. It is has a private data-sharing attribute.
+of a \code{for} or \code{do} construct. It has a private data-sharing attribute.
 Variables with predetermined data-sharing attributes can not be listed in a data-sharing clause; but there are some
 exceptions (mainly concerning loop iteration variables).
 
@@ -40,9 +40,9 @@ For a complete list of variables and objects with predetermined and
 implicitly determined attributes, please refer to the
 \plc{Data-sharing Attribute Rules for Variables Referenced in a Construct}
 subsection of the OpenMP Specifications document.  
-\newline
 
-DATA-MAPPING
+\bigskip
+DATA-MAPPING ATTRIBUTES
 
 The \code{map} clause on a device construct explictly specifies how the list items in
 the clause are mapped from the encountering task's data environment (on the host)
