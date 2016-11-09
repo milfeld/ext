@@ -10,8 +10,10 @@ CHAPTERS=Title_Page.tex \
 	Examples_*.tex \
 	History.tex
 
-CSOURCES=sources/*.*.c
-FSOURCES=sources/*.*.f
+SOURCES=sources/*.c \
+	sources/*.cpp \
+	sources/*.f90 \
+	sources/*.f 
 
 INTERMEDIATE_FILES=openmp-examples.pdf \
 		openmp-examples.toc \
@@ -22,7 +24,7 @@ INTERMEDIATE_FILES=openmp-examples.pdf \
 		openmp-examples.out \
 		openmp-examples.log
 
-openmp-examples.pdf: $(CHAPTERS) $(CSOURCES) $(FSOURCES) openmp.sty openmp-examples.tex openmp-logo.png
+openmp-examples.pdf: $(CHAPTERS) $(SOURCES) openmp.sty openmp-examples.tex openmp-logo.png
 	rm -f $(INTERMEDIATE_FILES)
 	pdflatex -interaction=batchmode -file-line-error openmp-examples.tex
 	pdflatex -interaction=batchmode -file-line-error openmp-examples.tex

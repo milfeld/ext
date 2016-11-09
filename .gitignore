@@ -20,6 +20,9 @@ old
 *.eps
 *.pdf
 
+## Synctex database
+*.synctex
+
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
 *.bcf
