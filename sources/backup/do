@@ -1,5 +1,0 @@
-
-grep F-free *.f > see-free
-grep F-fixed *.f > see-fixed
-grep C++ * > see-cpp
-egrep '@@type:\s+C' *.c | grep -v C++ > see_c

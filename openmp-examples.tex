@@ -49,7 +49,7 @@
 
 % Text to appear in the footer on even-numbered pages:
 \newcommand{\VER}{4.5.0}
-\newcommand{\VERDATE}{July 2016}
+\newcommand{\VERDATE}{November 2016}
 \newcommand{\footerText}{OpenMP Examples Version \VER{} - \VERDATE}
 
 % Unified style sheet for OpenMP documents:
@@ -86,6 +86,7 @@
        \input{Examples_nowait}
        \input{Examples_collapse}
      % linear Clause 475
+       \input{Examples_linear_in_loop}
        \input{Examples_psections}
        \input{Examples_fpriv_sections}
        \input{Examples_single}
@@ -97,7 +98,7 @@
 
     \input{Chap_affinity}
        \input{Examples_affinity}
-      % Query functions for Affinity 481
+       \input{Examples_affinity_query}
 
     \input{Chap_tasking}
        \input{Examples_tasking}
@@ -115,11 +116,12 @@
        \input{Examples_declare_target}
            % Link clause 474
        \input{Examples_teams}
-       \input{Examples_async_target}
+       \input{Examples_async_target_depend}
+       \input{Examples_async_target_with_tasks}
            %Title change of 57.1 and 57.2
            %New subsection
-           % Target nowait 478
-           % Target task depend 469
+       \input{Examples_async_target_nowait}
+       \input{Examples_async_target_nowait_depend}
        \input{Examples_array_sections}
      % Structure Element in map 487
        \input{Examples_device}
@@ -140,6 +142,7 @@
        \input{Examples_flush_nolist}
        \input{Examples_ordered}
      % Doacross loop  405
+       \input{Examples_doacross}
        \input{Examples_locks}
             \input{Examples_init_lock}
             \input{Examples_init_lock_with_hint} 
@@ -165,7 +168,7 @@
      %  C array reduction 377
        \input{Examples_copyin}
        \input{Examples_copyprivate}
-     %  C++ Reference type  479
+       \input{Examples_cpp_reference}
      %  Fortran 2003 features  482
             \input{Examples_associate}  %section--> subsection
 

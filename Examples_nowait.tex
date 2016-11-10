@@ -6,9 +6,9 @@ If there are multiple independent loops within a \code{parallel} region, you
 can use the \code{nowait} clause to avoid the implied barrier at the end of the 
 loop construct, as follows:
 
-\cexample{nowait}{1c}
+\cexample{nowait}{1}
 
-\fexample{nowait}{1f}
+\fexample{nowait}{1}
 
 In the following example, static scheduling distributes the same logical iteration 
 numbers to the threads that execute the three loop regions. This allows the \code{nowait} 
@@ -22,7 +22,7 @@ to \code{n-1} (from \code{1} to \code{N} in the Fortran version), while the
 iteration space of the last loop is from \code{1} to \code{n} (\code{2} to 
 \code{N+1} in the Fortran version).
 
-\cexample{nowait}{2c}
+\cexample{nowait}{2}
 
-\ffreeexample{nowait}{2f90}
+\ffreeexample{nowait}{2}
 

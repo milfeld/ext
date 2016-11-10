@@ -20,6 +20,9 @@ old
 *.eps
 *.pdf
 
+## Synctex database
+*.synctex
+
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
 *.bcf
@@ -28,3 +31,11 @@ old
 *-blx.bib
 *.run.xml
 
+# ignore typical backup files  (Michael Klemm request)
+*~
+*.bak
+*.[0-9]
+
+# ignore compiler outputs (Michael Klemm request)
+*.o
+*.obj
